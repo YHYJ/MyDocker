@@ -1,0 +1,3 @@
+redis                   --- docker run -dit --name=redis6379 -p 6379:6379 -v redis6379:/data --restart=unless-stopped redis
+yhyj/archlinux          --- docker run -it --restart=unless-stopped --name=archlinux yhyj/archlinux:2.0
+portainer/portainer     --- docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock --name portainer -v portainer:/data --restart unless-stopped portainer/portainer
