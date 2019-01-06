@@ -1,0 +1,19 @@
+version: '2'
+services:
+  music:
+    image: yhyj/netease-cloud-music
+    container_name: netease-cloud-music
+    privileged: true
+    devices:
+      - /dev/snd
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/Music:/home/netease/Music
+    environment:
+      - DISPLAY=unix$DISPLAY
+      - QT_IM_MODULE=Fcitx5
+      - GTK_IM_MODULE=Fcitx5
+      - XMODIFIERS=@im=Fcitx
+      - audio_gid=995
+      - GID=985
+      - UID=1000
