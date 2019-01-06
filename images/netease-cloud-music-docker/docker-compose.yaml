@@ -1,9 +1,12 @@
+# use for netease-cloud-music
 version: '2'
 services:
   music:
-    image: yhyj/netease-cloud-music
+    build:
+      context: ./
+      dockerfile: Dockerfile
     container_name: netease-cloud-music
-    privileged: true
+    privileged: 'true'
     devices:
       - /dev/snd
     volumes:
