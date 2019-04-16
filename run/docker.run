@@ -1,4 +1,4 @@
-# 系统监控
+# 监控
 portainer/portainer     --- docker run -d --name=portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data --restart=unless-stopped portainer/portainer
 
 # 数据库
