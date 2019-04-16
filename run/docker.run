@@ -1,12 +1,15 @@
 # 监控
-portainer/portainer     --- docker run -d --name=portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data --restart=unless-stopped portainer/portainer
-
-# 数据库
-redis                   --- docker run -d --name=redis -p 6379:6379 -v redis:/data --restart=unless-stopped redis
-postgres                --- docker run -d --name=postgres -e POSTGRES_USER=xxx -e POSTGRES_PASSWORD=xxx -e POSTGRES_DB=postgres -v postgres:/var/lib/postgresql/data --restart=unless-stopped postgres
+portainer/portainer     --- docker run -d --name=XXX -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v XXX:/data --restart=unless-stopped portainer/portainer
 
 # AMQP
-rabbitmq                --- docker run -d --name=rabbitmq -p 5672:5672 -p 15672:15672 --hostname=YJ-Arch -v rabbitmq:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management
+rabbitmq                --- docker run -d --name=XXX -p 5672:5672 -p 15672:15672 --hostname=XXX -v XXX:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management
+
+# 数据库
+redis                   --- docker run -d --name=XXX -p 6379:6379 -v redis:/data --restart=unless-stopped redis
+postgres                --- docker run -d --name=XXX -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres -v XXX:/var/lib/postgresql/data --restart=unless-stopped postgres
+
+# 系统
+odoo                    --- docker run -dit --name=XXX -p 8069:8069 --link XXX:XXX --restart=unless-stopped odoo
 
 # Mine
-yhyj/archlinux          --- docker run -it --name=archlinux --restart=unless-stopped yhyj/archlinux:2.0
+yhyj/archlinux          --- docker run -it --name=XXX --restart=unless-stopped yhyj/archlinux:2.0
