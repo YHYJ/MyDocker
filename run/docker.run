@@ -1,16 +1,16 @@
 # 监控
-portainer/portainer     --- docker run -d --name=portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v XXX:/data --restart=unless-stopped portainer/portainer
+portainer/portainer     --- docker run -d --name=portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data --restart=unless-stopped portainer/portainer
 
 # AMQP
-rabbitmq                --- docker run -d --name=rabbitmq -p 5672:5672 -p 15672:15672 --hostname=XXX -v XXX:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management
+rabbitmq                --- docker run -d --name=rabbitmq -p 5672:5672 -p 15672:15672 --hostname=XXX -v rabbitmq:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management
 
 # 数据库
 redis                   --- docker run -d --name=redis -p 6379:6379 -v redis:/data --restart=unless-stopped redis
-postgres                --- docker run -d --name=postgres -p 5432:5432 -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres -v XXX:/var/lib/postgresql/data --restart=unless-stopped postgres
-oracle                  --- docker run -d --name=oracle -p 8080:8080 -p 1521:1521 --privileged -v $(pwd)/oradata:/u01/app/oracle absolutapps/oracle-12c-ee
+postgres                --- docker run -d --name=postgres -p 5432:5432 -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres -v postgres:/var/lib/postgresql/data --restart=unless-stopped postgres
+oracle                  --- docker run -d --name=oracle -p 8080:8080 -p 1521:1521 -v oracle:/u01/app/oracle --privileged absolutapps/oracle-12c-ee
 
 # 系统
-odoo                    --- docker run -dit --name=odoo -p 8069:8069 -e HOST=XXX --link XXX:XXX --restart=unless-stopped odoo
+odoo                    --- docker run -dit --name=odoo -e HOST=<postgres container name> -p 8069:8069 --link <postgres container name>:db --restart=unless-stopped odoo
 
 # Mine
 yhyj/archlinux          --- docker run -it --name=archlinux --restart=unless-stopped yhyj/archlinux:2.0
