@@ -7,6 +7,7 @@ rabbitmq                --- docker run -d --name=XXX -p 5672:5672 -p 15672:15672
 # 数据库
 redis                   --- docker run -d --name=XXX -p 6379:6379 -v redis:/data --restart=unless-stopped redis
 postgres                --- docker run -d --name=XXX -p 5432:5432 -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres -v XXX:/var/lib/postgresql/data --restart=unless-stopped postgres
+oracle                  --- docker run -d --name oracle --privileged -v $(pwd)/oradata:/u01/app/oracle -p 8080:8080 -p 1521:1521 absolutapps/oracle-12c-ee
 
 # 系统
 odoo                    --- docker run -dit --name=XXX -p 8069:8069 -e HOST=XXX --link XXX:XXX --restart=unless-stopped odoo
