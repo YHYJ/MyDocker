@@ -6,7 +6,7 @@ rabbitmq                --- docker run -dit --name=rabbitmq -p 5672:5672 -p 1567
 
 # 数据库
 redis                   --- docker run -dit --name=redis -p 6379:6379 -v redis:/data --restart=unless-stopped redis
-postgres                --- docker run -dit --name=postgres -p 5432:5432 -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres -v postgres:/var/lib/postgresql/data --restart=unless-stopped postgres
+postgres                --- docker run -dit --name=postgres -p 5432:5432 -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres -v postgres:/var/lib/postgresql/data -v postgres:/var/lib/postgresql/data --restart=unless-stopped postgres
 oracle                  --- docker run -dit --name=oracle -p 8080:8080 -p 1521:1521 -v oracle:/u01/app/oracle --privileged --restart=unless-stopped absolutapps/oracle-12c-ee
 
 # 系统
