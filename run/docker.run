@@ -10,7 +10,7 @@ postgres                --- docker run -dit --name=postgres -p 5432:5432 -e POST
 oracle                  --- docker run -dit --name=oracle -p 8080:8080 -p 1521:1521 -v oracle:/u01/app/oracle --privileged --restart=unless-stopped absolutapps/oracle-12c-ee
 
 # 系统
-odoo                    --- docker run -dit --name=odoo -e HOST=<postgres container name> -p 8069:8069 --link <postgres container name>:db --restart=unless-stopped odoo
+odoo                    --- docker run -dit --name=odoo -e HOST=<pg CNTR name> -p 8069:8069 -v odoo:/var/lib/odoo -v odoo:/mnt/extra-addons --link <pg CNTR name>:db --restart=unless-stopped odoo
 
 # Mine
 yhyj/archlinux          --- docker run -it --name=archlinux --restart=unless-stopped yhyj/archlinux:2.0
