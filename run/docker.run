@@ -1,16 +1,16 @@
 # 监控
-portainer/portainer     --- docker run -dit --name=portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer:/data --restart=unless-stopped portainer/portainer
+portainer/portainer     --- docker run -dit --name=portainer --publish=9000:9000 --volume=/var/run/docker.sock:/var/run/docker.sock --volume=portainer:/data --restart=unless-stopped portainer/portainer
 
 # AMQP
-rabbitmq                --- docker run -dit --name=rabbitmq -p 5672:5672 -p 15672:15672 --hostname=XXX -v rabbitmq:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management
+rabbitmq                --- docker run -dit --name=rabbitmq --publish=5672:5672 --publish=15672:15672 --hostname=XXX --volume=rabbitmq:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management
 
 # 数据库
-redis                   --- docker run -dit --name=redis -p 6379:6379 -v redis:/data --restart=unless-stopped redis
-postgres                --- docker run -dit --name=postgres -p 5432:5432 -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres -v postgres:/var/lib/postgresql/data -v postgres:/var/lib/postgresql/data --restart=unless-stopped postgres
-oracle                  --- docker run -dit --name=oracle -p 8080:8080 -p 1521:1521 -v oracle:/u01/app/oracle --privileged --restart=unless-stopped absolutapps/oracle-12c-ee
+redis                   --- docker run -dit --name=redis --publish=6379:6379 --volume=redis:/data --restart=unless-stopped redis
+postgres                --- docker run -dit --name=postgres --publish=5432:5432 --volume=postgres:/var/lib/postgresql/data --volume=postgres:/var/lib/postgresql/data -e POSTGRES_USER=XXX -e POSTGRES_PASSWORD=XXX -e POSTGRES_DB=postgres --restart=unless-stopped postgres
+oracle                  --- docker run -dit --name=oracle --publish=8080:8080 --publish=1521:1521 --volume=oracle:/u01/app/oracle --privileged --restart=unless-stopped absolutapps/oracle-12c-ee
 
 # 系统
-odoo                    --- docker run -dit --name=odoo -e HOST=<pg CNTR name> -p 8069:8069 -v odoo:/var/lib/odoo -v odoo:/mnt/extra-addons --link <pg CNTR name>:db --restart=unless-stopped odoo
+odoo                    --- docker run -dit --name=odoo -e HOST=<pg CNTR name> --publish=8069:8069 --volume=odoo:/var/lib/odoo --volume=odoo:/mnt/extra-addons --link <pg CNTR name>:db --restart=unless-stopped odoo
 
 # Mine
 yhyj/archlinux          --- docker run -it --name=archlinux --restart=unless-stopped yhyj/archlinux:2.0
