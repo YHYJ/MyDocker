@@ -12,4 +12,4 @@ echo ">>>>>>>>>Execute script: $0"
 
 # AMQP - rabbitmq
 # --hostname=YJ-Arch    <--- 该rabbitmq节点的节点名(Node Name)，rabbitmq根据节点名存储数据
-docker run -dit --name=rabbitmq --publish=5672:5672 --publish=15672:15672 --hostname=YJ-Arch --volume=rabbitmq:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management
+docker run -dit --name=rabbitmq --publish=4369:4369 --publish=5671:5671 --publish=5672:5672 --publish=15671:15671 --publish=15672:15672 --publish=25672:25672 --hostname=YJ-Arch --volume=rabbitmq:/var/lib/rabbitmq --restart=unless-stopped rabbitmq:management

@@ -12,4 +12,4 @@ echo ">>>>>>>>>Execute script: $0"
 
 # 数据库 - oracle
 # --privileged  <--- 授予该容器特殊权限
-docker run -dit --name=oracle --publish=1521:1521 --publish=8080:8080 --volume=oracle:/u01/app/oracle --privileged --restart=unless-stopped absolutapps/oracle-12c-ee
+docker run -dit --name=oracle --publish=1521:1521 --publish=5500:5500 --publish=8080:8080 --volume=oracle:/u01/app/oracle --privileged --restart=unless-stopped absolutapps/oracle-12c-ee
