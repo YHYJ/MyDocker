@@ -23,3 +23,7 @@ services:
       - $HOME/Documents/MyDockeroot/data/gitlab/data:/var/opt/gitlab
       - $HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab
       - $HOME/Documents/MyDockeroot/data/gitlab/registry:/var/lib/registry
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://127.0.0.1'
+        nginx['redirect_http_to_https'] = true
