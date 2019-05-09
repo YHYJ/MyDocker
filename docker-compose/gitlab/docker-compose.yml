@@ -26,6 +26,7 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://192.168.43.77'
+        letsencrypt['enable'] = false
         nginx['redirect_http_to_https'] = true
         nginx['ssl_certificate'] = '/etc/gitlab/ssl/192.168.43.77.crt'
         nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/192.168.43.77.key'
