@@ -5,6 +5,11 @@
 # 系统 - gitlab
 # 需要几分钟进行初始化和健康检查
 # 第一次运行不确定能否通过检测时最好去掉`-d`参数
+# ---------------------------------------------- #
+# GITLAB_OMNIBUS_CONFIG: |
+#   external_url : 外部访问的URL
+#   letsencrypt['enable'] ： 是否使用Let's Encrypt证书
+#   nginx['redirect_http_to_https'] : 是否将http重定向到https
 
 version: '3'
 services:
