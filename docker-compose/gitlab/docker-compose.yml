@@ -7,10 +7,10 @@
 # 第一次运行不确定能否通过检测时最好去掉`-d`参数
 # ---------------------------------------------- #
 # GITLAB_OMNIBUS_CONFIG: |
-#   external_url : 外部访问的URL
-#   letsencrypt['enable'] ： 是否使用Let's Encrypt证书
-#   nginx['redirect_http_to_https'] : 是否将http重定向到https
-#   high_availability['mountpoint'] : 限定服务启动前指定的文件系统要已挂载
+#   external_url                        外部访问的URL
+#   letsencrypt['enable']               是否使用Let's Encrypt证书
+#   nginx['redirect_http_to_https']     是否将http重定向到https
+#   high_availability['mountpoint']     限定服务启动前指定的文件系统要已挂载
 
 version: '3'
 services:
