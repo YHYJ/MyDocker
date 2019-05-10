@@ -36,6 +36,23 @@ docker pull gitlab/gitlab-ce
 > systemctl restart sshd
 > ```
 
+### 设置私有证书
+
+```shell
+vim /etc/pki/tls/openssl.cnf
+
+[ v3_ca ]
+subjectAltName=IP:192.168.253.131
+```
+
+```shell
+openssl req -x509 -nodes -days 36500 -newkey rsa:2048 -keyout 192.168.253.131.key -out 192.168.253.131.crt -subj "/C=US/CN=gitlab/O=gitlab.com"
+
+openssl dhparam -out dhparam.pem 2048
+```
+
+
+
 ### 运行gitlab
 
 > 需要几分钟时间进行初始化和健康检查，耐心等待
