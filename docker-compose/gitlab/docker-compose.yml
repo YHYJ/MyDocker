@@ -10,6 +10,7 @@
 #   external_url : 外部访问的URL
 #   letsencrypt['enable'] ： 是否使用Let's Encrypt证书
 #   nginx['redirect_http_to_https'] : 是否将http重定向到https
+#   high_availability['mountpoint'] : 限定服务启动前指定的文件系统要已挂载
 
 version: '3'
 services:
@@ -26,8 +27,8 @@ services:
     volumes:
       - $HOME/Documents/MyDockeroot/data/gitlab/config:/etc/gitlab
       - $HOME/Documents/MyDockeroot/data/gitlab/data:/var/opt/gitlab
-      - $HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab
       - $HOME/Documents/MyDockeroot/data/gitlab/registry:/var/lib/registry
+      - $HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://127.0.0.1'
@@ -35,3 +36,4 @@ services:
         nginx['redirect_http_to_https'] = true
         nginx['ssl_certificate'] = '/etc/gitlab/ssl/127.0.0.1.crt'
         nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/127.0.0.1.key'
+        high_availability['mountpoint'] = ['/etc/gitlab', '/var/opt/gitlab', '/var/lib/registry', '/var/log/gitlab']
