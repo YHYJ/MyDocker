@@ -25,10 +25,10 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - $HOME/Documents/MyDockeroot/data/gitlab/config:/etc/gitlab
-      - $HOME/Documents/MyDockeroot/data/gitlab/data:/var/opt/gitlab
-      - $HOME/Documents/MyDockeroot/data/gitlab/registry:/var/lib/registry
-      - $HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab
+      - $HOME/Documents/MyDockeroot/data/gitlab/config:/etc/gitlab          # gitlab配置文件
+      - $HOME/Documents/MyDockeroot/data/gitlab/data:/var/opt/gitlab        # gitlab数据文件
+      - $HOME/Documents/MyDockeroot/data/gitlab/registry:/var/opt/registry  # Docker Container Registry(gitlab集成)数据文件
+      - $HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab        # gitlab日志文件
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://127.0.0.1'
