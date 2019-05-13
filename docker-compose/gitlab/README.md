@@ -46,7 +46,7 @@ subjectAltName=IP:192.168.253.131
 ```
 
 ```shell
-openssl req -x509 -nodes -days 36500 -newkey rsa:2048 -keyout 192.168.253.131.key -out 192.168.253.131.crt -subj "/C=US/CN=gitlab/O=gitlab.com"
+openssl req -x509 -nodes -days 36500 -newkey rsa:2048 -keyout gitlab.key -out gitlab.crt -subj "/C=US/CN=gitlab/O=gitlab.com"
 
 openssl dhparam -out dhparam.pem 2048
 ```
