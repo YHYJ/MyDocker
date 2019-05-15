@@ -1,0 +1,18 @@
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2019-05-15 09:40:43
+
+# docker <- watchtower -> Watches your containers and automatically restarts them whenever their image is refreshed
+
+version: '3'
+services:
+  watchtower:
+    image: v2tec/watchtower
+    container_name: watchtower
+    restart: unless-stopped     # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_POLL_INTERVAL: 604800      # 间隔7天
+      WATCHTOWER_CLEANUP: 'true'
