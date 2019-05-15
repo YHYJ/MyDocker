@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-06 11:15:44
 
-# AMQP - rabbitmq
+# AMQP <- rabbitmq -> RabbitMQ is an open source multi-protocol messaging broker
 
 version: '3'
 services:
