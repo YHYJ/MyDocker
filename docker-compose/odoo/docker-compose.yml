@@ -17,11 +17,15 @@ services:
       - '8086:8086'
     volumes:
       - odoo:/var/lib/odoo
-      - $HOME/Documents/MyDockeroot/data/odoo:/mnt/extra-addons   # 插件
+      - $HOME/Documents/MyDockeroot/data/odoo:/mnt/extra-addons   # 插件目录
     environment:
       HOST: postgres            # services.name[postgres]
-    links:
-      - postgres:db             # services.name[postgres], link.alias = db
+    # links:
+    #   - postgres:db             # services.name[postgres], link.alias = db
+    networks:
+      odoo_postgres:
+        aliases:
+          - db
   postgres:
     image: postgres
     container_name: pg4odoo
@@ -36,6 +40,10 @@ services:
       POSTGRES_DB: postgres     # 默认数据库名
       POSTGRES_USER: odoo
       POSTGRES_PASSWORD: odoo
+    networks:
+      odoo_postgres:
 volumes:
   odoo: {}
   pg4odoo: {}
+networks:
+  odoo_postgres: {}             # 创建网络，services.odoo和services.postgres共享
