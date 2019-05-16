@@ -18,5 +18,7 @@ services:
       - '8080:8080'
     volumes:
       - oracle:/u01/app/oracle
+    environment:
+      TZ: Asia/Shanghai
 volumes:
   oracle: {}

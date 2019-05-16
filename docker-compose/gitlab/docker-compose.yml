@@ -35,6 +35,7 @@ services:
       - $HOME/Documents/MyDockeroot/data/gitlab/data:/var/opt/gitlab        # gitlab数据文件
       - $HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab        # gitlab日志文件
     environment:
+      TZ: Asia/Shanghai
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://127.0.0.1'
         letsencrypt['enable'] = false

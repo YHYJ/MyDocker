@@ -21,6 +21,7 @@ services:
     volumes:
       - rabbitmq:/var/lib/rabbitmq
     environment:
+      TZ: Asia/Shanghai
       hostname: YJ-Arch
 volumes:
   rabbitmq: {}

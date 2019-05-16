@@ -19,6 +19,7 @@ services:
       - odoo:/var/lib/odoo
       - $HOME/Documents/MyDockeroot/data/odoo:/mnt/extra-addons   # 插件目录
     environment:
+      TZ: Asia/Shanghai
       HOST: postgres            # services.name[postgres]
     # links:
     #   - postgres:db             # services.name[postgres], link.alias = db

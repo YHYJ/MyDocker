@@ -16,5 +16,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer:/data
+    environment:
+      TZ: Asia/Shanghai
 volumes:
   portainer: {}

@@ -17,8 +17,10 @@ services:
       - postgres:/var/lib/postgres/data
       - postgres:/var/lib/postgresql/data
     environment:
+      TZ: Asia/Shanghai
       POSTGRES_DB: postgres     # 默认数据库名
       POSTGRES_USER: postgres   # 默认用户名
       POSTGRES_PASSWORD: postgres
+
 volumes:
   postgres: {}
