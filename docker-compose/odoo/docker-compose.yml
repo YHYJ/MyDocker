@@ -44,7 +44,9 @@ services:
     networks:
       odoo_postgres:
 volumes:
-  odoo: {}
-  pg4odoo: {}
+  odoo:
+    name: odoo
+  pg4odoo:
+    name: pg4odoo
 networks:
   odoo_postgres: {}             # 创建网络，services.odoo和services.postgres共享

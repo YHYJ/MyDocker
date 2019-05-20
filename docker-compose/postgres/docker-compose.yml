@@ -23,4 +23,5 @@ services:
       POSTGRES_PASSWORD: postgres
 
 volumes:
-  postgres: {}
+  postgres:
+    name: postgres

@@ -18,4 +18,5 @@ services:
     environment:
       TZ: Asia/Shanghai
 volumes:
-  redis: {}
+  redis:
+    name: redis

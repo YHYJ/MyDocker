@@ -21,4 +21,5 @@ services:
     environment:
       TZ: Asia/Shanghai
 volumes:
-  oracle: {}
+  oracle:
+    name: oracle
