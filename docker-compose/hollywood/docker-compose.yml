@@ -4,7 +4,7 @@
 
 # 游戏 <- hollywood -> 终端相关
 
-version: '3'
+version: '3.7'
 services:
   hollywood:
     image: jess/hollywood

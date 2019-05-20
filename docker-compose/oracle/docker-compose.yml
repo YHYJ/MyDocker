@@ -5,7 +5,7 @@
 # 数据库 <- oracle -> Oracle 12c EE image with web management console
 # username: system ; password: oracle
 
-version: '3'
+version: '3.7'
 services:
   oracle:
     image: absolutapps/oracle-12c-ee

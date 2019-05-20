@@ -4,7 +4,7 @@
 
 # docker <- watchtower -> Watches your containers and automatically restarts them whenever their image is refreshed
 
-version: '3'
+version: '3.7'
 services:
   watchtower:
     image: v2tec/watchtower

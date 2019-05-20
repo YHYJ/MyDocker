@@ -4,7 +4,7 @@
 
 # 系统 <- odoo - > Odoo (formerly known as OpenERP) is a suite of open-source business apps
 
-version: '3'
+version: '3.7'
 services:
   odoo:
     image: odoo

@@ -4,7 +4,7 @@
 
 # 数据库 <- postgres -> The PostgreSQL object-relational database system provides reliability and data integrity
 
-version: '3'
+version: '3.7'
 services:
   postgres:
     image: postgres

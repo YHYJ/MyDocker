@@ -17,7 +17,7 @@
 #   external_url                外部访问的URL
 #   letsencrypt['enable']       是否使用Let's Encrypt证书
 
-version: '3'
+version: '3.7'
 services:
   gitlab:
     image: gitlab/gitlab-ce

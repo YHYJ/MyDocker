@@ -4,7 +4,7 @@
 
 # 数据库 <- redis -> Redis is an open source key-value store that functions as a data structure server
 
-version: '3'
+version: '3.7'
 services:
   redis:
     image: redis
