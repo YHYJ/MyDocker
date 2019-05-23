@@ -7,9 +7,9 @@
 version: '3.7'
 services:
   rabbitmq:
-    image: rabbitmq:management
-    container_name: rabbitmq
-    restart: unless-stopped     # no, unless-stopped, always, on-failure:<max-retries>
+    image: 'rabbitmq:management'
+    container_name: 'rabbitmq'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '4369:4369'
@@ -19,10 +19,10 @@ services:
       - '15672:15672'
       - '25672:25672'
     volumes:
-      - rabbitmq:/var/lib/rabbitmq
+      - 'rabbitmq:/var/lib/rabbitmq'
     environment:
-      TZ: Asia/Shanghai
-      hostname: YJ-Arch
+      TZ: 'Asia/Shanghai'
+      hostname: 'YJ-Arch'
 volumes:
   rabbitmq:
-    name: rabbitmq
+    name: 'rabbitmq'

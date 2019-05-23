@@ -7,46 +7,46 @@
 version: '3.7'
 services:
   odoo:
-    image: odoo
-    container_name: odoo
-    restart: unless-stopped     # no, unless-stopped, always, on-failure:<max-retries>
+    image: 'odoo'
+    container_name: 'odoo'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '8069:8069'
       - '8071:8071'
       - '8086:8086'
     volumes:
-      - odoo:/var/lib/odoo
-      - $HOME/Documents/MyDockeroot/data/odoo:/mnt/extra-addons   # 插件目录
+      - 'odoo:/var/lib/odoo'
+      - '$HOME/Documents/MyDockeroot/data/odoo:/mnt/extra-addons'   # 插件目录
     environment:
-      TZ: Asia/Shanghai
-      HOST: postgres            # services.name[postgres]
+      TZ: 'Asia/Shanghai'
+      HOST: 'postgres'            # services.name[postgres]
     # links:
-    #   - postgres:db             # services.name[postgres], link.alias = db
+    #   - 'postgres:db'             # services.name[postgres], link.alias = db
     networks:
       odoo_postgres:
         aliases:
-          - db
+          - 'db'
   postgres:
-    image: postgres
-    container_name: pg4odoo
-    restart: unless-stopped     # no, unless-stopped, always, on-failure:<max-retries>
+    image: 'postgres'
+    container_name: 'pg4odoo'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '5432:5432'
     volumes:
-      - pg4odoo:/var/lib/postgres/data
-      - pg4odoo:/var/lib/postgresql/data
+      - 'pg4odoo:/var/lib/postgres/data'
+      - 'pg4odoo:/var/lib/postgresql/data'
     environment:
-      POSTGRES_DB: postgres     # 默认数据库名
-      POSTGRES_USER: odoo
-      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: 'postgres'     # 默认数据库名
+      POSTGRES_USER: 'odoo'
+      POSTGRES_PASSWORD: 'odoo'
     networks:
       odoo_postgres:
 volumes:
   odoo:
-    name: odoo
+    name: 'odoo'
   pg4odoo:
-    name: pg4odoo
+    name: 'pg4odoo'
 networks:
   odoo_postgres: {}             # 创建网络，services.odoo和services.postgres共享

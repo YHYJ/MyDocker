@@ -8,18 +8,18 @@
 version: '3.7'
 services:
   oracle:
-    image: absolutapps/oracle-12c-ee
-    container_name: oracle
-    restart: unless-stopped     # no, unless-stopped, always, on-failure:<max-retries>
+    image: 'absolutapps/oracle-12c-ee'
+    container_name: 'oracle'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: true
     ports:
       - '1521:1521'
       - '5500:5500'
       - '8080:8080'
     volumes:
-      - oracle:/u01/app/oracle
+      - 'oracle:/u01/app/oracle'
     environment:
-      TZ: Asia/Shanghai
+      TZ: 'Asia/Shanghai'
 volumes:
   oracle:
-    name: oracle
+    name: 'oracle'
