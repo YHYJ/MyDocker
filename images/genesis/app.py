@@ -1,24 +1,55 @@
-from flask import Flask
-from redis import Redis, RedisError
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Author: YJ
+Email: yj1516268@outlook.com
+Created Time: 2019-05-22 17:51:17
+
+
+"""
+
 import os
 import socket
+import time
 
-# Connect to Redis
-redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+import redis
+from flask import Flask
 
 app = Flask(__name__)
+cache = redis.Redis(host='redis', port=6379)
 
-@app.route("/")
+
+def get_hit_count():
+    """hit counter
+    :returns: TODO
+
+    """
+    retries = 5
+    while True:
+        try:
+            return cache.incr('hits')
+        except redis.exceptions.ConnectionError as error:
+            if retries == 0:
+                raise error
+            retries -= 1
+            time.sleep(0.5)
+
+
+@app.route('/')
 def hello():
-    try:
-        visits = redis.incr("counter")
-    except RedisError:
-        visits = "<i>cannot connect to Redis, counter disabled!</i>"
+    """TODO: Docstring for hello.
+    :returns: TODO
 
-    html = "<h3>Hello {name}!</h3>" \
-           "<b>Hostname:</b> {hostname}<br/>" \
-           "<b>Visits:</b> {visits}"
-    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+    """
+    count = get_hit_count()
+
+    html = "<h3>Hello {name}! I have been seen {count} time.</h3>"\
+            "<b>Hostname:</b> {hostname}<br/>"
+
+    return html.format(name=os.getenv("NAME", "world"),
+                       count=count,
+                       hostname=socket.gethostname())
+
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', debug=True)

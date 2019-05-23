@@ -1,19 +1,16 @@
-version : "3"             # version3 兼容 "swarm mode"
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2019-05-23 10:18:07
+
+# 运行Python flask app <- python-flask-app-on-docker -> self-defined
+
+version: '3.7'
 services:
   web:
-    image: yhyj/genesis:latest  # 相应的"Docker ID"、"Image name"和"Tag name"，以方便拉取该镜像
-    deploy:
-      replicas : 5        # 将该镜像的5个实例作为服务 "web" 运行
-      resources:
-        limits:
-          cpus : "0.1"    # 限制每个实例最多使用10%CPU（在所有CPU核心）
-          memory : 50M    # 限制每个实例最多使用50M内存
-      restart_policy:
-        condition : on-failure   # 如果某个容器发生故障，立即重启该容器
+    build: .
     ports:
-        - "80:80"       # 将主机上的端口80映射到 "web" 的端口80（主机端口:容器端口）
-    networks:
-      - webnet          # 指示 "web" 容器通过负载均衡的网络 "webnet" 共享端口80（在内部，容器自身将临时端口发布到 "web" 的端口80）
-networks:
-  webnet:               # 使用默认设置定义 "webnet" 网络（负载均衡的overlay网络）
-
+      - '5000:5000'
+    environment:
+      TZ: 'Asia/Shanghai'
+  redis:
+    image: 'redis'
