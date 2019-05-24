@@ -2,90 +2,90 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-21 10:47:33
 
-#  <-  -> 
+# official example <- docker-compose.yml
 
-version: '3.7'
+version: "3.7"
 services:
 
   redis:
-    image: 'redis:alpine'
+    image: redis:alpine
     ports:
-      - '6379'
+      - "6379"
     networks:
-      - 'frontend'
+      - frontend
     deploy:
-      replicas: '2'
+      replicas: 2
       update_config:
-        parallelism: '2'
-        delay: '10s'
+        parallelism: 2
+        delay: 10s
       restart_policy:
-        condition: 'on-failure'
+        condition: on-failure
 
   db:
-    image: 'postgres:9.4'
+    image: postgres:9.4
     volumes:
-      - 'db-data:/var/lib/postgresql/data'
+      - db-data:/var/lib/postgresql/data
     networks:
-      - 'backend'
+      - backend
     deploy:
       placement:
         constraints: [node.role == manager]
 
   vote:
-    image: 'dockersamples/examplevotingapp_vote:before'
+    image: dockersamples/examplevotingapp_vote:before
     ports:
-      - '5000:80'
+      - "5000:80"
     networks:
-      - 'frontend'
+      - frontend
     depends_on:
-      - 'redis'
+      - redis
     deploy:
-      replicas: '2'
+      replicas: 2
       update_config:
-        parallelism: '2'
+        parallelism: 2
       restart_policy:
-        condition: 'on-failure'
+        condition: on-failure
 
   result:
-    image: 'dockersamples/examplevotingapp_result:before'
+    image: dockersamples/examplevotingapp_result:before
     ports:
-      - '5001:80'
+      - "5001:80"
     networks:
-      - 'backend'
+      - backend
     depends_on:
-      - 'db'
+      - db
     deploy:
-      replicas: '1'
+      replicas: 1
       update_config:
-        parallelism: '2'
-        delay: '10s'
+        parallelism: 2
+        delay: 10s
       restart_policy:
-        condition: 'on-failure'
+        condition: on-failure
 
   worker:
-    image: 'dockersamples/examplevotingapp_worker'
+    image: dockersamples/examplevotingapp_worker
     networks:
-      - 'frontend'
-      - 'backend'
+      - frontend
+      - backend
     deploy:
-      mode: 'replicated'
-      replicas: '1'
+      mode: replicated
+      replicas: 1
       labels: [APP=VOTING]
       restart_policy:
-        condition: 'on-failure'
-        delay: '10s'
-        max_attempts: '3'
-        window: '120s'
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
       placement:
         constraints: [node.role == manager]
 
   visualizer:
-    image: 'dockersamples/visualizer:stable'
+    image: dockersamples/visualizer:stable
     ports:
-      - '8080:8080'
-    stop_grace_period: '1m30s'
+      - "8080:8080"
+    stop_grace_period: 1m30s
     volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - "/var/run/docker.sock:/var/run/docker.sock"
     deploy:
       placement:
         constraints: [node.role == manager]
@@ -96,3 +96,4 @@ networks:
 
 volumes:
   db-data:
+
