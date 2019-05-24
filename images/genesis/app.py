@@ -46,7 +46,7 @@ def hello():
     html = "<h3>Hello {name}! I have been seen {count} time.</h3>"\
             "<b>Hostname:</b> {hostname}<br/>"
 
-    return html.format(name=os.getenv("NAME", "world"),
+    return html.format(name=os.getenv("NAME", "from Docker"),
                        count=count,
                        hostname=socket.gethostname())
 
