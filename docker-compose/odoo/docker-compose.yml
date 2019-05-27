@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-04-29 14:42:53
 
-# 系统 <- odoo - > Odoo (formerly known as OpenERP) is a suite of open-source business apps
+# 系统 <- odoo - > Odoo (formerly known as OpenERP) is a suite of open-source business apps.
 
 version: '3.7'
 services:
@@ -20,20 +20,18 @@ services:
       - '$HOME/Documents/MyDockeroot/data/odoo:/mnt/extra-addons'   # 插件目录
     environment:
       TZ: 'Asia/Shanghai'
-      HOST: 'postgres'            # services.name[postgres]
+      HOST: 'db'                 # services.name[postgres]
     # links:
-    #   - 'postgres:db'             # services.name[postgres], link.alias = db
+    #   - 'db:db'                # services.name[postgres], link.alias = db
     networks:
       odoo_postgres:
         aliases:
           - 'db'
-  postgres:
+  db:
     image: 'postgres'
     container_name: 'pg4odoo'
     restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
-    ports:
-      - '5432:5432'
     volumes:
       - 'pg4odoo:/var/lib/postgres/data'
       - 'pg4odoo:/var/lib/postgresql/data'

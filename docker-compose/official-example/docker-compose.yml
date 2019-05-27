@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-21 10:47:33
 
-# official example <- docker-compose.yml
+# official example <- docker-compose.yml.
 
 version: "3.7"
 services:

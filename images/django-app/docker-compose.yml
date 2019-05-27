@@ -1,0 +1,21 @@
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2019-05-24 14:13:40
+
+# python-django-app  <- self-defined -> 
+
+version: '3.7'
+services:
+  db:
+    image: 'postgres'
+  web:
+    build: '.'
+    container_name: 'django-app'
+    ports:
+      - '8000:8000'
+    volumes:
+      - '.:/code'
+    environment:
+      TZ: 'Asia/Shanghai'
+    depends_on:
+      - 'db'

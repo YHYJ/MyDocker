@@ -1,0 +1,43 @@
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2019-05-27 10:15:05
+
+# 博客系统 <- wordpress -> The WordPress rich content management system can utilize plugins, widgets, and themes.
+
+version: '3.7'
+services:
+  wordpress:
+    image: 'wordpress'
+    container_name: 'wordpress'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    depends_on:
+      - 'db'
+    ports:
+      - '8000:80'
+    volumes:
+      - 'wordpress:/var/www/html'
+    environment:
+      TZ: 'Asia/Shanghai'
+      WORDPRESS_DB_HOST: 'db'
+      WORDPRESS_DB_NAME: 'wordpress'
+      WORDPRESS_DB_USER: 'wordpress'
+      WORDPRESS_DB_PASSWORD: 'wordpress'
+  db:
+    image: 'mysql:5.7'
+    container_name: 'mysql4wordpress'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    environment:
+      TZ: 'Asia/Shanghai'
+      MYSQL_RANDOM_ROOT_PASSWORD: 'mysqlroot'
+      MYSQL_DATABASE: 'wordpress'
+      MYSQL_USER: 'wordpress'
+      MYSQL_PASSWORD: 'wordpress'
+volumes:
+  mysql:
+    name: 'mysql4wordpress'
+  wordpress:
+    name: 'wordpress'

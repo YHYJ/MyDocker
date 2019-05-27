@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-06 14:15:59
 
-# 数据库 <- redis -> Redis is an open source key-value store that functions as a data structure server
+# 数据库 <- redis -> Redis is an open source key-value store that functions as a data structure server.
 
 version: '3.7'
 services:

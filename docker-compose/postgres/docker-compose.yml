@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-06 14:23:39
 
-# 数据库 <- postgres -> The PostgreSQL object-relational database system provides reliability and data integrity
+# 数据库 <- postgres -> The PostgreSQL object-relational database system provides reliability and data integrity.
 
 version: '3.7'
 services:
