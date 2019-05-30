@@ -18,8 +18,14 @@ services:
       - '8080:8080'
     volumes:
       - 'oracle:/u01/app/oracle'
+    networks:
+      oracle: {}
     environment:
       TZ: 'Asia/Shanghai'
+
 volumes:
+  oracle:
+    name: 'oracle'
+networks:
   oracle:
     name: 'oracle'

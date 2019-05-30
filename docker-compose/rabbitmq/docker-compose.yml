@@ -20,9 +20,15 @@ services:
       - '25672:25672'
     volumes:
       - 'rabbitmq:/var/lib/rabbitmq'
+    networks:
+      rabbitmq: {}
     environment:
       TZ: 'Asia/Shanghai'
       hostname: 'YJ-Arch'
+
 volumes:
+  rabbitmq:
+    name: 'rabbitmq'
+networks:
   rabbitmq:
     name: 'rabbitmq'

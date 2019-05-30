@@ -11,5 +11,11 @@ services:
     container_name: 'hollywood'
     restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
+    networks:
+      hollywood: {}
     environment:
       TZ: 'Asia/Shanghai'
+
+networks:
+  hollywood:
+    name: 'hollywood'

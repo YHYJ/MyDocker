@@ -34,6 +34,8 @@ services:
       - '$HOME/Documents/MyDockeroot/data/gitlab/config:/etc/gitlab'          # gitlab配置文件
       - '$HOME/Documents/MyDockeroot/data/gitlab/data:/var/opt/gitlab'        # gitlab数据文件
       - '$HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab'        # gitlab日志文件
+    networks:
+      gitlab: {}
     environment:
       TZ: 'Asia/Shanghai'
       GITLAB_OMNIBUS_CONFIG: |
@@ -71,3 +73,7 @@ services:
         gitlab_rails['registry_port'] = '5005'
         registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.crt'
         registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.key'
+
+networks:
+  gitlab:
+    name: 'gitlab'

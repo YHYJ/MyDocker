@@ -15,8 +15,14 @@ services:
       - '6379:6379'
     volumes:
       - 'redis:/data'
+    networks:
+      redis: {}
     environment:
       TZ: 'Asia/Shanghai'
+
 volumes:
+  redis:
+    name: 'redis'
+networks:
   redis:
     name: 'redis'
