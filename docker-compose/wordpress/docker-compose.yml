@@ -18,7 +18,7 @@ services:
     volumes:
       - 'wordpress:/var/www/html'
     networks:
-      wordpress_mysql: {}
+      wordpress-mysql: {}
     environment:
       TZ: 'Asia/Shanghai'
       WORDPRESS_DB_HOST: 'db'
@@ -33,7 +33,7 @@ services:
     volumes:
       - 'mysql:/var/lib/mysql'
     networks:
-      wordpress_mysql: {}
+      wordpress-mysql: {}
     environment:
       TZ: 'Asia/Shanghai'
       MYSQL_RANDOM_ROOT_PASSWORD: 'mysqlroot'
@@ -47,5 +47,5 @@ volumes:
   wordpress:
     name: 'wordpress'
 networks:
-  wordpress_mysql:
+  wordpress-mysql:
     name: 'wordpress-mysql'
