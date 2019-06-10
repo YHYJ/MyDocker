@@ -17,7 +17,7 @@ services:
       watchtower: {}
     environment:
       TZ: 'Asia/Shanghai'
-      WATCHTOWER_POLL_INTERVAL: '86400'      # 间隔1天
+      WATCHTOWER_POLL_INTERVAL: '43200'      # 间隔0.5天
       WATCHTOWER_CLEANUP: 'true'
 
 networks:
