@@ -26,9 +26,12 @@ services:
       TZ: 'Asia/Shanghai'
       hostname: 'YJ-Arch'
 
+
 volumes:
   rabbitmq:
     name: 'rabbitmq'
+
+
 networks:
   rabbitmq:
     name: 'rabbitmq'

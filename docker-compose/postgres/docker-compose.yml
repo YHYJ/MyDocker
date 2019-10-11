@@ -24,9 +24,12 @@ services:
       POSTGRES_USER: 'postgres'   # 默认用户名
       POSTGRES_PASSWORD: 'postgres'
 
+
 volumes:
   postgres:
     name: 'postgres'
+
+
 networks:
   postgres:
     name: 'postgres'

@@ -31,9 +31,9 @@ services:
       - '443:443'
       - '5005:5005'
     volumes:
-      - '$HOME/Documents/MyDockeroot/data/gitlab/config:/etc/gitlab'          # gitlab配置文件
-      - '$HOME/Documents/MyDockeroot/data/gitlab/data:/var/opt/gitlab'        # gitlab数据文件
-      - '$HOME/Documents/MyDockeroot/data/gitlab/logs:/var/log/gitlab'        # gitlab日志文件
+      - 'config:/etc/gitlab'
+      - 'data:/var/opt/gitlab'
+      - 'logs:/var/log/gitlab'
     networks:
       gitlab: {}
     environment:
@@ -73,6 +73,16 @@ services:
         gitlab_rails['registry_port'] = '5005'
         registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.crt'
         registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.key'
+
+
+volumes:
+  config:
+    name: 'gitlab-config'
+  data:
+    name: 'gitlab-data'
+  logs:
+    name: 'gitlab-logs'
+
 
 networks:
   gitlab:

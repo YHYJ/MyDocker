@@ -27,6 +27,7 @@ services:
     environment:
       TZ: 'Asia/Shanghai'
       HOST: 'db'                 # services.name[postgres]
+
   db:
     image: 'postgres'
     container_name: 'pg4odoo'
@@ -42,6 +43,7 @@ services:
       POSTGRES_USER: 'odoo'
       POSTGRES_PASSWORD: 'odoo'
 
+
 volumes:
   odoo:
     name: 'odoo'
@@ -49,6 +51,8 @@ volumes:
     name: 'odoo-extra_addons'
   pg4odoo:
     name: 'pg4odoo'
+
+
 networks:
   odoo-postgres:                 # 创建网络，services.odoo和services.postgres共享
     name: 'odoo-postgres'

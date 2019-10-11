@@ -20,9 +20,12 @@ services:
     environment:
       TZ: 'Asia/Shanghai'
 
+
 volumes:
   redis:
     name: 'redis'
+
+
 networks:
   redis:
     name: 'redis'

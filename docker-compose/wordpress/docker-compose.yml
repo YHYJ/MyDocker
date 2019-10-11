@@ -25,6 +25,7 @@ services:
       WORDPRESS_DB_NAME: 'wordpress'
       WORDPRESS_DB_USER: 'wordpress'
       WORDPRESS_DB_PASSWORD: 'wordpress'
+
   db:
     image: 'mysql:5.7'
     container_name: 'mysql4wordpress'
@@ -41,11 +42,14 @@ services:
       MYSQL_USER: 'wordpress'
       MYSQL_PASSWORD: 'wordpress'
 
+
 volumes:
   mysql:
     name: 'mysql4wordpress'
   wordpress:
     name: 'wordpress'
+
+
 networks:
   wordpress-mysql:
     name: 'wordpress-mysql'
