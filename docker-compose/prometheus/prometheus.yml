@@ -1,0 +1,17 @@
+# Prometheus配置文件
+
+global:                             # 全局配置
+  scrape_interval:      10s         # 数据拉取间隔时间，default = 1min
+  scrape_timeout:       10s         # 单次数据拉取超时时间，default = 1min
+  evaluation_interval:  10s         # 规则拉取间隔时间，defalut = 10s
+  external_labels:                  # 该prometheus服务和其他系统对接时的标签
+    monitor: 'Arch-Linux'             # key: value
+
+# rule_files:
+
+scrape_configs:                     # 数据拉取配置
+  - job_name: 'prometheus'          # job名称，是一个拉取单元
+    honor_labels: false             # 标签准则，false以配置文件为准，true以数据为准
+    scheme: 'http'                  # 抓取数据使用的协议，default = 'http'
+    static_configs:                 # 静态配置抓取目标
+      - targets: ['localhost:9090'] # 抓取目标

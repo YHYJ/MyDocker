@@ -1,0 +1,34 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2019-10-14 10:09:11
+
+# Description: Prometheus is an open-source systems monitoring and alerting toolkit
+
+version: '3.7'
+services:
+  prometheus:
+    image: 'prom/prometheus'
+    container_name: 'prometheus'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '9090:9090'
+    volumes:
+      - './prometheus.yml:/etc/prometheus/prometheus.yml'
+      - 'prometheus:/data'
+      - 'prometheus:/prometheus'
+    networks:
+      data: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+
+
+volumes:
+  prometheus:
+    name: 'prometheus'
+
+
+networks:
+  data:
+    name: 'data-display'

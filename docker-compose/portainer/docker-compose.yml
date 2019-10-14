@@ -1,8 +1,9 @@
+# File: docker-compose.yml
 # Author: YJ
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-06 11:09:34
 
-# Monitor <- Portainer -> Making Docker management easy. https://portainer.io
+# Description: Making Docker management easy. https://portainer.io
 
 version: '3.7'
 services:

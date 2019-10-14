@@ -1,8 +1,9 @@
+# File: docker-compose.yml
 # Author: YJ
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-27 10:15:05
 
-# Platform <- WordPress -> The WordPress rich content management system can utilize plugins, widgets, and themes
+# Description: The WordPress rich content management system can utilize plugins, widgets, and themes
 
 version: '3.7'
 services:

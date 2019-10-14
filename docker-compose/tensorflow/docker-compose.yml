@@ -1,8 +1,9 @@
+# File: docker-compose.yml
 # Author: YJ
 # Email: yj1516268@outlook.com
 # Created Time: 2019-06-20 17:22:55
 
-# Framework <- TenforFlow -> Official Docker images for the machine learning framework TensorFlow (http://www.tensorflow.org)
+# Description: Official Docker images for the machine learning framework TensorFlow (http://www.tensorflow.org)
 
 version: '3.7'
 services:

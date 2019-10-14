@@ -1,8 +1,9 @@
+# File: docker-compose.yml
 # Author: YJ
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-06 10:44:30
 
-# Database <- Oracle -> Oracle 12c EE image with web management console
+# Description: Oracle 12c EE image with web management console
 
 # username: system ; password: oracle
 

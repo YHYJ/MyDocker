@@ -1,8 +1,9 @@
+# File: docker-compose.yml
 # Author: YJ
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-06 14:23:39
 
-# Database <- PostgreSQL -> The PostgreSQL object-relational database system provides reliability and data integrity
+# Description: The PostgreSQL object-relational database system provides reliability and data integrity
 
 version: '3.7'
 services:
