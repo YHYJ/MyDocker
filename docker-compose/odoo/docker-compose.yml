@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-04-29 14:42:53
 
-# 系统 <- odoo - > Odoo (formerly known as OpenERP) is a suite of open-source business apps.
+# Platform <- Odoo - > Odoo (formerly known as OpenERP) is a suite of open-source business apps
 
 version: '3.7'
 services:

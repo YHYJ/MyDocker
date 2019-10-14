@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-07-29 14:13:44
 
-# 数据库 <- influxdb -> influxdb、chronograf、grafana三件套
+# Database <- Influxdb -> influxdb、chronograf、grafana三件套
 
 version: '3.7'
 services:

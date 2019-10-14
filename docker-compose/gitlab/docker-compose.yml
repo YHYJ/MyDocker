@@ -2,7 +2,8 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-04-29 14:34:46
 
-# 系统 <- gitlab -> GitLab Community Edition docker image based on the Omnibus package.
+# Platform <- Gitlab -> GitLab Community Edition docker image based on the Omnibus package
+
 # 需要几分钟进行初始化和健康检查
 # 第一次运行不确定能否通过检测时最好去掉`-d`参数
 # ---------------------------------------------- #

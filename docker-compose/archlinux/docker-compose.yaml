@@ -2,12 +2,12 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-06-20 16:52:48
 
-#  <-  -> 
+# System <- Arch Linux -> Docker Base image for Arch Linux
 
 version: '3.7'
 services:
   archlinux:
-    image: 'base/archlinux'
+    image: 'archlinux/base'
     container_name: 'archlinux'
     hostname: 'YJ-Arch'
     restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>

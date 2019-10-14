@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-09 10:38:59
 
-# 游戏 <- hollywood -> 终端相关.
+# Game <- hollywood -> 终端游戏
 
 version: '3.7'
 services:

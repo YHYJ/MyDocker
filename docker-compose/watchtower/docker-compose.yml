@@ -2,7 +2,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2019-05-15 09:40:43
 
-# docker <- watchtower -> Watches your containers and automatically restarts them whenever their image is refreshed.
+# Monitor <- WatchTower -> Watches your containers and automatically restarts them whenever their image is refreshed
 
 version: '3.7'
 services:
