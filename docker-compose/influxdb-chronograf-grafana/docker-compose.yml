@@ -1,0 +1,73 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2019-10-23 09:00:00
+
+# Description: InfluxDB is an open source time series database for recording metrics, events, and analytics
+#              Chronograf is a visualization tool for time series data in InfluxDB
+#              The official Grafana docker container
+
+
+version: '3.7'
+services:
+  influxdb:
+    image: 'influxdb'
+    container_name: 'influxdb'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '8086:8086'
+    volumes:
+      - 'influxdb:/var/lib/influxdb'
+    networks:
+      data: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+      INFLUXDB_DB: 'YHYJ'
+      INFLUXDB_USER: 'yj'
+      INFLUXDB_USER_PASSWORD: 'yj'
+
+  chronograf:
+    image: 'chronograf'
+    container_name: 'chronograf'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '8888:8888'
+    volumes:
+      - 'chronograf:/var/lib/chronograf'
+    networks:
+      data: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+      INFLUXDB_URL: 'http://influxdb:8086'
+      INFLUXDB_USERNAME: 'yj'
+      INFLUXDB_PASSWORD: 'yj'
+
+  grafana:
+    image: 'grafana/grafana'
+    container_name: 'grafana'
+    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '3000:3000'
+    volumes:
+      - 'grafana:/var/lib/grafana'
+    networks:
+      data: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+
+
+volumes:
+  influxdb:
+    name: 'musketeer_influxdb'
+  chronograf:
+    name: 'musketeer_chronograf'
+  grafana:
+    name: 'musketeer_grafana'
+
+
+networks:
+  data:
+    name: 'musketeers'
