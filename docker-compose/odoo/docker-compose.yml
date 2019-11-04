@@ -28,6 +28,15 @@ services:
     environment:
       TZ: 'Asia/Shanghai'
       HOST: 'db'                 # services.name[postgres]
+    labels:
+      servicename: 'odoo'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
   db:
     image: 'postgres'
@@ -43,6 +52,15 @@ services:
       POSTGRES_DB: 'postgres'    # 默认数据库名
       POSTGRES_USER: 'odoo'
       POSTGRES_PASSWORD: 'odoo'
+    labels:
+      servicename: 'pg4odoo'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
 
 volumes:

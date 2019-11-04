@@ -24,6 +24,15 @@ services:
       POSTGRES_DB: 'postgres'     # 默认数据库名
       POSTGRES_USER: 'postgres'   # 默认用户名
       POSTGRES_PASSWORD: 'postgres'
+    labels:
+      servicename: 'postgres'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
 
 volumes:

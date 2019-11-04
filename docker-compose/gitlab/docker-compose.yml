@@ -75,6 +75,15 @@ services:
         gitlab_rails['registry_port'] = '5005'
         registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.crt'
         registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.key'
+    labels:
+      servicename: 'gitlab'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
 
 volumes:

@@ -21,6 +21,15 @@ services:
       portainer: {}
     environment:
       TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'portainer'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
 
 volumes:

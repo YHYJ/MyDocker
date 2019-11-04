@@ -26,6 +26,15 @@ services:
       INFLUXDB_DB: 'YHYJ'
       INFLUXDB_USER: 'yj'
       INFLUXDB_USER_PASSWORD: 'yj'
+    labels:
+      servicename: 'influxdb'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
   chronograf:
     image: 'chronograf'
@@ -43,6 +52,15 @@ services:
       INFLUXDB_URL: 'http://influxdb:8086'
       INFLUXDB_USERNAME: 'yj'
       INFLUXDB_PASSWORD: 'yj'
+    labels:
+      servicename: 'chronograf'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
   grafana:
     image: 'grafana/grafana'
@@ -57,6 +75,15 @@ services:
       data: {}
     environment:
       TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'grafana'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
 
 volumes:

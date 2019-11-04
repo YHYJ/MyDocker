@@ -1,23 +1,23 @@
 # File: docker-compose.yml
 # Author: YJ
 # Email: yj1516268@outlook.com
-# Created Time: 2019-05-09 10:38:59
+# Created Time: 2019-11-04 14:30:32
 
-# Description: 终端游戏
+# Description: Hello World
 
 version: '3.7'
 services:
-  hollywood:
-    image: 'jess/hollywood'
-    container_name: 'hollywood'
+  helloworld:
+    image: 'hello-world'
+    container_name: 'helloworld'
     restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     networks:
-      hollywood: {}
+      helloworld: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
-      servicename: 'hollywood'
+      servicename: 'helloworld'
     logging:
       driver: 'json-file'
       options:
@@ -28,5 +28,5 @@ services:
 
 
 networks:
-  hollywood:
-    name: 'hollywood'
+  helloworld:
+    name: 'helloworld'

@@ -26,6 +26,15 @@ services:
       WORDPRESS_DB_NAME: 'wordpress'
       WORDPRESS_DB_USER: 'wordpress'
       WORDPRESS_DB_PASSWORD: 'wordpress'
+    labels:
+      servicename: 'wordpress'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
   db:
     image: 'mysql:5.7'
@@ -42,6 +51,15 @@ services:
       MYSQL_DATABASE: 'wordpress'
       MYSQL_USER: 'wordpress'
       MYSQL_PASSWORD: 'wordpress'
+    labels:
+      servicename: 'mysql4wordpress'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
 
 
 volumes:
