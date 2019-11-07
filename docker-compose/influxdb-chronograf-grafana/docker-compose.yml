@@ -97,4 +97,4 @@ volumes:
 
 networks:
   data:
-    name: 'musketeers'
+    name: 'influxdb-chronograf-grafana'

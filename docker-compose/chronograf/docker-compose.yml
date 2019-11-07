@@ -17,7 +17,7 @@ services:
     volumes:
       - 'chronograf:/var/lib/chronograf'
     networks:
-      data: {}
+      chronograf: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -35,5 +35,5 @@ volumes:
   chronograf:
     name: 'chronograf'
 networks:
-  data:
-    name: 'data-display'
+  chronograf:
+    name: 'chronograf'

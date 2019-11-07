@@ -17,7 +17,7 @@ services:
     volumes:
       - 'influxdb:/var/lib/influxdb'
     networks:
-      data: {}
+      influxdb: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -37,5 +37,5 @@ volumes:
 
 
 networks:
-  data:
-    name: 'data-display'
+  influxdb:
+    name: 'influxdb'

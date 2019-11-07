@@ -73,5 +73,5 @@ volumes:
 
 
 networks:
-  odoo-postgres:                 # 创建网络，services.odoo和services.postgres共享
+  odoo-postgres:
     name: 'odoo-postgres'

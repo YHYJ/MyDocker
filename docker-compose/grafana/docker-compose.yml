@@ -17,7 +17,7 @@ services:
     volumes:
       - 'grafana:/var/lib/grafana'
     networks:
-      data: {}
+      grafana: {}
     environment:
       TZ: 'Asia/Shanghai'
       GF_PANELS_DISABLE_SANITIZE_HTML: 'true'
@@ -38,5 +38,5 @@ volumes:
 
 
 networks:
-  data:
-    name: 'data-display'
+  grafana:
+    name: 'grafana'
