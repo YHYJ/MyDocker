@@ -13,7 +13,7 @@ services:
     restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '9090:9090'
+      - '127.0.0.1:9090:9090'
     volumes:
       - './prometheus.yml:/etc/prometheus/prometheus.yml'
       - 'prometheus:/prometheus'
@@ -36,8 +36,6 @@ services:
     # container_name: 'node-exporter'
     # restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     # privileged: false
-    # ports:
-    #   - '9100:9100'
     # networks:
     #   prometheus: {}
     # environment:

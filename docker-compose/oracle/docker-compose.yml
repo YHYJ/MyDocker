@@ -15,9 +15,9 @@ services:
     restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
     privileged: true
     ports:
-      - '1521:1521'
-      - '5500:5500'
-      - '8080:8080'
+      - '127.0.0.1:1521:1521'
+      - '127.0.0.1:5500:5500'
+      - '127.0.0.1:8080:8080'
     volumes:
       - 'oracle:/u01/app/oracle'
     networks:
