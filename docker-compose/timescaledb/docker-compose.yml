@@ -4,6 +4,7 @@
 # Created Time: 2019-11-08 14:30:10
 
 # Description: An open-source time-series database optimized for fast ingest and complex queries. Engineered up from PostgreSQL, packaged as an extension
+# 默认用户名：postgres
 
 version: '3.7'
 services:
@@ -20,7 +21,7 @@ services:
       timescaledb: {}
     environment:
       TZ: 'Asia/Shanghai'
-      POSTGRES_PASSWORD=: 'yj'
+      POSTGRES_PASSWORD: 'postgres'
     labels:
       servicename: 'timescaledb'
     logging:

@@ -21,9 +21,9 @@ services:
       data: {}
     environment:
       TZ: 'Asia/Shanghai'
-      INFLUXDB_DB: 'YHYJ'
-      INFLUXDB_USER: 'yj'
-      INFLUXDB_USER_PASSWORD: 'yj'
+      INFLUXDB_DB: 'influxdb'
+      INFLUXDB_USER: 'influxdb'
+      INFLUXDB_USER_PASSWORD: 'influxdb'
     labels:
       servicename: 'influxdb'
     logging:
@@ -48,8 +48,8 @@ services:
     environment:
       TZ: 'Asia/Shanghai'
       INFLUXDB_URL: 'http://influxdb:8086'
-      INFLUXDB_USERNAME: 'yj'
-      INFLUXDB_PASSWORD: 'yj'
+      INFLUXDB_USERNAME: 'influxdb'
+      INFLUXDB_PASSWORD: 'influxdb'
     labels:
       servicename: 'chronograf'
     logging:
