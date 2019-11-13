@@ -19,15 +19,11 @@ services:
     volumes:
       - 'odoo:/var/lib/odoo'
       - 'odoo-extra_addons:/mnt/extra-addons'
-    # links:
-    #   - 'db:db'                # services.name[postgres], link.alias = db
     networks:
-      odoo-postgres:
-        aliases:
-          - 'db'
+      odoo-postgres: {}
     environment:
       TZ: 'Asia/Shanghai'
-      HOST: 'db'                 # services.name[postgres]
+      HOST: 'db'
     labels:
       servicename: 'odoo'
     logging:
@@ -47,7 +43,9 @@ services:
       - 'pg4odoo:/var/lib/postgres/data'
       - 'pg4odoo:/var/lib/postgresql/data'
     networks:
-      odoo-postgres: {}
+      odoo-postgres:
+        aliases:
+          - 'db'
     environment:
       POSTGRES_DB: 'postgres'    # 默认数据库名
       POSTGRES_USER: 'odoo'

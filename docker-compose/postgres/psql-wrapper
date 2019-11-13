@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+: <<!
+File: psql-wrapper
+Author: YJ
+Email: yj1516268@outlook.com
+Created Time: 2019-11-11 15:07:20
+
+Description: 使用image自带的psql连接数据库
+!
+
+docker exec -it timescaledb psql -U postgres
