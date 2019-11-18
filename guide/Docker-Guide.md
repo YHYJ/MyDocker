@@ -10,6 +10,12 @@
 
 - 容器的基础之一是[cgroups](https://www.kernel.org/doc/Documentation/cgroup-v2.txt)，因此容器在Linux上本地运行，在Windows上是通过构建一个Linux kernel，在这个kernel上运行
 
+等：
+https://docs.docker.com/
+https://docs.docker.com/engine/swarm/swarm-tutorial/
+https://docs.docker.com/v17.09/get-started/part5/
+https://blog.csdn.net/github_38705794/article/details/77541371
+
 ---
 
 ## 基础
@@ -101,6 +107,17 @@ Swarm manager使用**ingress load balancing（入口负载均衡）**来发布�
 外部组件（例如云端负载平衡器）可以访问Swarm中任何节点的已发布端口上的service（无论当前是否有正在运行该service的task，Swarm中的所有节点都会将入口流量路由到其运行中的task实例）
 
 Swarm模式有内部DNS组件，该组件自动为Swarm中的每个service分配DNS条目，Smanager使用**internal load balancing（内部负载均衡）**根据service的DNS名称在Swarm内的service之间分配请求
+
+### Swarm模式入门
+
+目标：
+
+- 以Swarm模式初始化Docker Engine
+- 向Swarm中添加节点
+- 在Swarm中部署程序service
+- 管理Swarm
+
+<!-- TODO-(2019-11-15 17:15) -->
 
 ## 进阶
 
