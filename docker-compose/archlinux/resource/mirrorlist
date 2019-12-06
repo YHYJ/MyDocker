@@ -1,0 +1,76 @@
+##
+## Arch Linux repository mirrorlist
+## Filtered by mirror score from mirror status page
+## Generated on 2019-02-01
+##
+
+
+## China
+Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.163.com/archlinux/$repo/os/$arch
+Server = https://mirrors.cqu.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirror.bit.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.nju.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.zju.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirror.lzu.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.neusoft.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.xjtu.edu.cn/archlinux/$repo/os/$arch
+
+## Hong Kong
+Server = https://mirrors.kurnode.com/archlinux/$repo/os/$arch
+Server = https://mirror.xtom.com.hk/archlinux/$repo/os/$arch
+Server = https://mirror-hk.koddos.net/archlinux/$repo/os/$arch
+
+## Taiwan
+Server = https://shadow.ind.ntou.edu.tw/archlinux/$repo/os/$arch
+Server = https://archlinux.cs.nctu.edu.tw/$repo/os/$arch
+Server = https://ftp.yzu.edu.tw/Linux/archlinux/$repo/os/$arch
+Server = http://ftp.tku.edu.tw/Linux/ArchLinux/$repo/os/$arch
+
+## United States
+Server = http://mirror.cs.pitt.edu/archlinux/$repo/os/$arch
+Server = http://mirror.cs.vt.edu/pub/ArchLinux/$repo/os/$arch
+Server = http://mirror.es.its.nyu.edu/archlinux/$repo/os/$arch
+Server = http://il.us.mirror.archlinux-br.org/$repo/os/$arch
+Server = http://mirrors.kernel.org/archlinux/$repo/os/$arch
+Server = http://mirror.cc.columbia.edu/pub/linux/archlinux/$repo/os/$arch
+Server = http://arch.mirror.square-r00t.net/$repo/os/$arch
+Server = http://mirrors.lug.mtu.edu/archlinux/$repo/os/$arch
+Server = http://mirrors.advancedhosters.com/archlinux/$repo/os/$arch
+Server = http://mirror.wdc1.us.leaseweb.net/archlinux/$repo/os/$arch
+Server = http://mirror.umd.edu/archlinux/$repo/os/$arch
+Server = http://mirror.sfo12.us.leaseweb.net/archlinux/$repo/os/$arch
+Server = http://mirror.hackingand.coffee/arch/$repo/os/$arch
+Server = http://mirrors.gigenet.com/archlinux/$repo/os/$arch
+Server = http://mirrors.ocf.berkeley.edu/archlinux/$repo/os/$arch
+Server = http://mirror.kaminski.io/archlinux/$repo/os/$arch
+Server = http://mirror.vtti.vt.edu/archlinux/$repo/os/$arch
+Server = http://arch.mirrors.pair.com/$repo/os/$arch
+Server = http://mirrors.liquidweb.com/archlinux/$repo/os/$arch
+Server = http://arlm.tyzoid.com/$repo/os/$arch
+Server = http://arch.mirror.constant.com/$repo/os/$arch
+Server = http://mirrors.cat.pdx.edu/archlinux/$repo/os/$arch
+Server = http://mirror.dal10.us.leaseweb.net/archlinux/$repo/os/$arch
+Server = http://mirrors.xmission.com/archlinux/$repo/os/$arch
+Server = http://mirror.metrocast.net/archlinux/$repo/os/$arch
+Server = http://distro.ibiblio.org/archlinux/$repo/os/$arch
+Server = http://mirror.stephen304.com/archlinux/$repo/os/$arch
+Server = http://mirrors.rutgers.edu/archlinux/$repo/os/$arch
+Server = http://archlinux.surlyjake.com/archlinux/$repo/os/$arch
+Server = http://www.gtlib.gatech.edu/pub/archlinux/$repo/os/$arch
+Server = http://repo.miserver.it.umich.edu/archlinux/$repo/os/$arch
+Server = http://mirror.dc02.hackingand.coffee/arch/$repo/os/$arch
+Server = http://mirrors.rit.edu/archlinux/$repo/os/$arch
+Server = http://mirror.siena.edu/archlinux/$repo/os/$arch
+Server = http://ftp.osuosl.org/pub/archlinux/$repo/os/$arch
+Server = http://mirror.math.princeton.edu/pub/archlinux/$repo/os/$arch
+Server = http://mirror.lty.me/archlinux/$repo/os/$arch
+Server = http://mirrors.acm.wpi.edu/archlinux/$repo/os/$arch
+Server = http://ca.us.mirror.archlinux-br.org/$repo/os/$arch
+Server = http://repo.ialab.dsu.edu/archlinux/$repo/os/$arch
+Server = http://mirrors.sonic.net/archlinux/$repo/os/$arch
+Server = http://mirrors.xtom.com/archlinux/$repo/os/$arch
+Server = http://mirrors.aggregate.org/archlinux/$repo/os/$arch

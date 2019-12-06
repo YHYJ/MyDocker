@@ -15,6 +15,10 @@ services:
     privileged: false
     stdin_open: true
     tty: true
+    volumes:
+      - './resource/pacman.conf:/etc/pacman.conf'
+      - './resource/mirrorlist:/etc/pacman.d/mirrorlist'
+      - './resource/archlinuxcn-mirrorlist:/etc/pacman.d/archlinuxcn-mirrorlist'
     networks:
       archlinux: {}
     environment:
