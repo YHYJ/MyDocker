@@ -16,9 +16,9 @@ docker pull gitlab/gitlab-ce
 
 > 自定义一个文件夹用来持久化存储数据。需要持久化的对象：
 >
-> - `/etc/gitlab`			# 配置文件
-> - `/var/log/gitlib`    # 日志文件
-> - `/var/opt/gitlab`    # 数据文件
+> - `/etc/gitlab`           # 配置文件
+> - `/var/log/gitlib`       # 日志文件
+> - `/var/opt/gitlab`       # 数据文件
 
 ### 端口映射
 
@@ -58,5 +58,5 @@ openssl dhparam -out dhparam.pem 2048
 > 需要几分钟时间进行初始化和健康检查，耐心等待
 
 ```shell
-docker-compose up		# 成功运行以后可在加上`-d`参数使容器在后台运行
+docker-compose up       # 成功运行以后可在加上`-d`参数使容器在后台运行
 ```
