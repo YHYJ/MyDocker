@@ -58,5 +58,5 @@ openssl dhparam -out dhparam.pem 2048
 > 需要几分钟时间进行初始化和健康检查，耐心等待
 
 ```shell
-docker-compose up       # 成功运行以后可在加上`-d`参数使容器在后台运行
+docker-compose up       # 成功运行以后加上`-d`参数使容器在后台运行
 ```
