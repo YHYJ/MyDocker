@@ -21,7 +21,7 @@ services:
       influxdb: {}
     environment:
       TZ: 'Asia/Shanghai'
-      INFLUXDB_UDP_ENABLED: true
+      INFLUXDB_UDP_ENABLED: 1
     labels:
       servicename: 'influxdb'
     logging:
