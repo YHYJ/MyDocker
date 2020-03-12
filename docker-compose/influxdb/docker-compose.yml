@@ -14,12 +14,14 @@ services:
     privileged: false
     ports:
       - '127.0.0.1:8086:8086'
+      - '127.0.0.1:8089:8089/udp'
     volumes:
       - 'influxdb:/var/lib/influxdb'
     networks:
       influxdb: {}
     environment:
       TZ: 'Asia/Shanghai'
+      INFLUXDB_UDP_ENABLED: true
     labels:
       servicename: 'influxdb'
     logging:
