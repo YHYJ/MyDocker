@@ -36,4 +36,4 @@ volumes:
     name: 'chronograf'
 networks:
   chronograf:
-    name: 'chronograf'
+    name: 'influxdata'

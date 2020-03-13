@@ -40,4 +40,4 @@ volumes:
 
 networks:
   influxdb:
-    name: 'influxdb'
+    name: 'influxdata'
