@@ -69,6 +69,7 @@ services:
       - '127.0.0.1:3000:3000'
     volumes:
       - 'grafana:/var/lib/grafana'
+      - './grafana/plugins:/var/lib/grafana/plugins'
     networks:
       data: {}
     environment:
