@@ -15,6 +15,8 @@ services:
     container_name: 'influxdb'
     restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
+    ports:
+      - '0.0.0.0:8086:8086'
     volumes:
       - 'influxdb:/var/lib/influxdb'
     networks:
@@ -74,6 +76,7 @@ services:
       data: {}
     environment:
       TZ: 'Asia/Shanghai'
+      GF_PANELS_DISABLE_SANITIZE_HTML: 'true'
     labels:
       servicename: 'grafana'
     logging:
