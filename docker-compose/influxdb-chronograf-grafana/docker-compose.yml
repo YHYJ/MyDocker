@@ -72,6 +72,7 @@ services:
     volumes:
       - 'grafana:/var/lib/grafana'
       - './grafana/plugins:/var/lib/grafana/plugins'
+      - './grafana/imgs:/usr/share/grafana/public/imgs'
     networks:
       data: {}
     environment:
