@@ -29,9 +29,3 @@ scrape_configs:
     scheme: 'http'                  # 抓取数据使用的协议，default = 'http'
     static_configs:                 # 静态配置抓取目标
       - targets: ['localhost:9090'] # 抓取目标
-  ## 使用node-exporter监控主机
-  - job_name: 'node'
-    metrics_path: '/metrics'
-    scheme: 'http'
-    static_configs:
-      - targets: ['node-exporter:9100']
