@@ -1,0 +1,73 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2020-08-18 12:13:27
+
+# Description: Multi-Broker Apache Kafka Image
+
+version: '3.7'
+services:
+  zookeeper:
+    image: 'zookeeper'
+    container_name: 'zookeeper'
+    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    volumes:
+      - 'data:/data'
+      - 'logs:/logs'
+      - 'datalog:/datalog'
+    networks:
+      kafka: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'zookeeper'
+    logging:
+      driver: 'json-file'    # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+  kafka:
+    image: 'wurstmeister/kafka'
+    container_name: 'kafka'
+    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '9092:9092'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - 'kafka:/kafka'
+    networks:
+      kafka: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+      KAFKA_ADVERTISED_HOST_NAME: '192.168.43.44'
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+    labels:
+      servicename: 'kafka'
+    logging:
+      driver: 'json-file'    # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+
+volumes:
+  kafka:
+    name: 'kafka'
+  data:
+    name: 'zookeeper-data'
+  logs:
+    name: 'zookeeper-logs'
+  datalog:
+    name: 'zookeeper-datalog'
+
+
+networks:
+  kafka:
+    name: 'kafka'
