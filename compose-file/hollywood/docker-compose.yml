@@ -5,7 +5,7 @@
 
 # Description: 终端游戏
 
-version: '3.7'
+version: '3'
 services:
   hollywood:
     image: 'jess/hollywood'

@@ -6,7 +6,7 @@
 # Description: 人人影视web端
 # 解锁密码：123456
 
-version: '3.7'
+version: '3'
 services:
   yyets:
     image: 'xinebf/yyets'

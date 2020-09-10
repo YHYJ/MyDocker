@@ -276,7 +276,7 @@ Swarm不会像[使用image](#使用image)中那样创建单个container。相反
     > stack deploy仅支持"3.0"及更高版本的Compose file
 
     ```yaml
-    version: '3.7'
+    version: '3'
 
     services:
       bulletinboard-app:

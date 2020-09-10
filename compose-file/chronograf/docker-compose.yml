@@ -5,7 +5,7 @@
 
 # Description: Chronograf is a visualization tool for time series data in InfluxDB
 
-version: '3.7'
+version: '3'
 services:
   chronograf:
     image: 'chronograf'

@@ -4,7 +4,7 @@
 
 # python-django-app  <- self-defined -> 
 
-version: '3.7'
+version: '3'
 services:
   db:
     image: 'postgres'

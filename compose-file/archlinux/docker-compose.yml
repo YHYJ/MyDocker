@@ -5,7 +5,7 @@
 
 # Description: Docker Base image for Arch Linux
 
-version: '3.7'
+version: '3'
 services:
   archlinux:
     image: 'archlinux'

@@ -5,7 +5,7 @@
 
 # Description: Official container images for Microsoft SQL Server on Linux for Docker Engine
 
-version: '3.7'
+version: '3'
 services:
   mssql-server:
     image: 'mcr.microsoft.com/mssql/server'
