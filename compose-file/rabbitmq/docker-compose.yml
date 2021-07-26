@@ -26,7 +26,8 @@ services:
       rabbitmq: {}
     environment:
       TZ: 'Asia/Shanghai'
-      hostname: 'YJ-Arch'
+      RABBITMQ_DEFAULT_USER: 'guest'
+      RABBITMQ_DEFAULT_PASS: 'guest'
     labels:
       servicename: 'rabbitmq'
     logging:
