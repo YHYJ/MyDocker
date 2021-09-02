@@ -22,9 +22,9 @@ services:
       timescaledb: {}
     environment:
       TZ: 'Asia/Shanghai'
-      POSTGRES_DB: 'postgres'     # 默认数据库名
-      POSTGRES_USER: 'postgres'   # 默认用户名
-      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'postgres'       # 默认数据库名
+      POSTGRES_USER: 'postgres'     # 默认用户名
+      POSTGRES_PASSWORD: 'postgres' # 默认密码
     labels:
       servicename: 'timescaledb'
     logging:
