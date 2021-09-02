@@ -3,7 +3,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2020-11-25 16:46:32
 
-# Description:
+# Description: SonarQube is an open source platform for continuous inspection of code quality
 
 version: '3'
 services:
@@ -15,8 +15,6 @@ services:
     privileged: false
     ports:
       - '9000:9000'
-    # volumes:
-    #   - ':'
     networks:
       sonarqube: {}
     environment:
@@ -31,11 +29,6 @@ services:
         max-file: '3'
         tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
         labels: 'servicename'
-
-
-# volumes:
-#   sonarqube:
-#     name: 'sonarqube'
 
 
 networks:
