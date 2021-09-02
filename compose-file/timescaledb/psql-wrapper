@@ -15,4 +15,4 @@ Description: 使用psql连接PostgreSQL
    psql --host=127.0.0.1 --port=5432 --dbname=postgres --username=postgres
 !
 
-psql --host=127.0.0.1 --port=5432 --dbname=postgres --username=postgres
+psql --host=127.0.0.1 --port=5433 --dbname=postgres --username=postgres
