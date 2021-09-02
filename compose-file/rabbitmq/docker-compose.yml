@@ -11,7 +11,7 @@ services:
     image: 'rabbitmq:management'
     container_name: 'rabbitmq'
     hostname: 'rabbitmq-docker'
-    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:4369:4369'
@@ -21,6 +21,7 @@ services:
       - '127.0.0.1:15672:15672'
       - '127.0.0.1:25672:25672'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'rabbitmq:/var/lib/rabbitmq'
     networks:
       rabbitmq: {}
@@ -31,7 +32,7 @@ services:
     labels:
       servicename: 'rabbitmq'
     logging:
-      driver: 'json-file'
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'

@@ -11,12 +11,13 @@ services:
     image: 'influxdb'
     container_name: 'influxdb'
     hostname: 'influxdb-docker'
-    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:8086:8086'
       - '127.0.0.1:8089:8089/udp'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'influxdb:/var/lib/influxdb'
     networks:
       influxdb: {}
@@ -26,7 +27,7 @@ services:
     labels:
       servicename: 'influxdb'
     logging:
-      driver: 'json-file'
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'

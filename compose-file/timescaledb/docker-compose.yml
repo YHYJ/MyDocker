@@ -4,7 +4,6 @@
 # Created Time: 2019-11-08 14:30:10
 
 # Description: An open-source time-series database optimized for fast ingest and complex queries. Engineered up from PostgreSQL, packaged as an extension
-# 默认用户名：postgres
 
 version: '3'
 services:
@@ -12,11 +11,12 @@ services:
     image: 'timescale/timescaledb:latest-pg12'
     container_name: 'timescaledb'
     hostname: 'timescaledb-docker'
-    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:5433:5432'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'timescaledb:/var/lib/postgresql/data'
     networks:
       timescaledb: {}
@@ -28,7 +28,7 @@ services:
     labels:
       servicename: 'timescaledb'
     logging:
-      driver: 'json-file'    # none, local, json-file(default), ...
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'

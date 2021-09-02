@@ -3,7 +3,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2020-09-29 13:27:40
 
-# Description:
+# Description: An Open-Source, Cloud-Native, Massive-Scalable MQTT Broker for IoT
 
 version: '3'
 services:
@@ -21,6 +21,7 @@ services:
       - '127.0.0.1:8883:8883'
       - '127.0.0.1:18083:18083'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'emqx-data:/opt/emqx/data'
       - 'emqx-etc:/opt/emqx/etc'
       - 'emqx-lib:/opt/emqx/lib'

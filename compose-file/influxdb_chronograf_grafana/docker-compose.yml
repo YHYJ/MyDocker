@@ -14,11 +14,12 @@ services:
     image: 'influxdb'
     container_name: 'influxdb'
     hostname: 'influxdb-docker'
-    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:8086:8086'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'influxdb:/var/lib/influxdb'
     networks:
       data: {}
@@ -30,7 +31,7 @@ services:
     labels:
       servicename: 'influxdb'
     logging:
-      driver: 'json-file'
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'
@@ -41,11 +42,12 @@ services:
     image: 'chronograf'
     container_name: 'chronograf'
     hostname: 'chronograf-docker'
-    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:8888:8888'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'chronograf:/var/lib/chronograf'
     networks:
       data: {}
@@ -57,7 +59,7 @@ services:
     labels:
       servicename: 'chronograf'
     logging:
-      driver: 'json-file'
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'
@@ -68,11 +70,12 @@ services:
     image: 'grafana/grafana'
     container_name: 'grafana'
     hostname: 'grafana-docker'
-    restart: 'unless-stopped'    # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:3000:3000'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'grafana:/var/lib/grafana'
       - './grafana/plugins:/var/lib/grafana/plugins'
       - './grafana/imgs:/usr/share/grafana/public/imgs'
@@ -84,7 +87,7 @@ services:
     labels:
       servicename: 'grafana'
     logging:
-      driver: 'json-file'
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'

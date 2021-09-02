@@ -10,9 +10,10 @@ services:
   zookeeper:
     image: 'zookeeper'
     container_name: 'zookeeper'
-    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - 'data:/data'
       - 'logs:/logs'
       - 'datalog:/datalog'
@@ -23,7 +24,7 @@ services:
     labels:
       servicename: 'zookeeper'
     logging:
-      driver: 'json-file'    # none, local, json-file(default), ...
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'
@@ -33,11 +34,12 @@ services:
   kafka:
     image: 'wurstmeister/kafka'
     container_name: 'kafka'
-    restart: 'unless-stopped'       # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:9092:9092'
     volumes:
+      - '/etc/localtime:/etc/localtime'
       - '/var/run/docker.sock:/var/run/docker.sock'
       - 'kafka:/kafka'
     networks:
@@ -49,7 +51,7 @@ services:
     labels:
       servicename: 'kafka'
     logging:
-      driver: 'json-file'    # none, local, json-file(default), ...
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'

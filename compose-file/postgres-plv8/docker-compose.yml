@@ -11,7 +11,7 @@ services:
     image: 'pyramation/postgres-plv8'
     container_name: 'postgres-plv8'
     hostname: 'postgres-plv8-docker'
-    restart: 'unless-stopped'  # no, unless-stopped, always, on-failure:<max-retries>
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
       - '127.0.0.1:5434:5432'
@@ -28,7 +28,7 @@ services:
     labels:
       servicename: 'postgres-plv8'
     logging:
-      driver: 'json-file'      # none, local, json-file(default), ...
+      driver: 'json-file'       # none, local, json-file(default), ...
       options:
         max-size: '10m'
         max-file: '3'
