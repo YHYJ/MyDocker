@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+: <<!
+File: psql-wrapper
+Author: YJ
+Email: yj1516268@outlook.com
+Created Time: 2019-11-11 15:07:20
+
+Description: 使用psql连接PostgreSQL
+
+说明：
+1. 用image自带的psql连接
+   docker exec -it postgres psql --username=postgres
+2. 用系统的psql连接
+   psql --host=127.0.0.1 --port=5432 --dbname=postgres --username=postgres
+!
+
+psql --host=127.0.0.1 --port=5434 --dbname=postgres --username=postgres
