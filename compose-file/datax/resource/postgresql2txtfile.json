@@ -1,0 +1,40 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "postgresqlreader",
+                    "parameter": {
+                        "username": "postgres",
+                        "password": "postgres",
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:postgresql://127.0.0.1:5432/postgres"],
+                                "table": ["example"]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "txtfilewriter",
+                    "parameter": {
+                        "dateFormat": "yyyy-MM-dd",
+                        "fieldDelimiter": "|",
+                        "fileName": "postgres-example",
+                        "path": "/opt/resource",
+                        "writeMode": "truncate"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "byte": 1048576
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        }
+    }
+}
