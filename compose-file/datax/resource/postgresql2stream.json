@@ -1,0 +1,37 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "postgresqlreader",
+                    "parameter": {
+                        "username": "postgres",
+                        "password": "postgres",
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:postgresql://127.0.0.1:5432/postgres"],
+                                "table": ["example"]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "streamwriter",
+                    "parameter": {
+                        "encoding": "UTF-8",
+                        "print": true
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "byte": 1048576
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        }
+    }
+}
