@@ -7,6 +7,7 @@
                     "parameter": {
                         "username": "postgres",
                         "password": "postgres",
+                        "column": ["id", "column1", "column2"],
                         "connection": [
                             {
                                 "jdbcUrl": ["jdbc:postgresql://127.0.0.1:5432/postgres"],
@@ -20,8 +21,8 @@
                     "parameter": {
                         "dateFormat": "yyyy-MM-dd",
                         "fieldDelimiter": "|",
-                        "fileName": "postgres-example",
-                        "path": "/opt/resource",
+                        "fileName": "postgresql-example",
+                        "path": "/opt/resource/txtfilewriter_result",
                         "writeMode": "truncate"
                     }
                 }
