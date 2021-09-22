@@ -1,0 +1,46 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "streamreader",
+                    "parameter": {
+                        "column": [
+                            {
+                                "value": "DataX",
+                                "type": "string"
+                            },
+                            {
+                                "value": 19880808,
+                                "type": "long"
+                            }
+                        ],
+                        "sliceRecordCount": 1000
+                    }
+                },
+                "writer": {
+                    "name": "postgresqlwriter",
+                    "parameter": {
+                        "username": "postgres",
+                        "password": "postgres",
+                        "column": ["id", "column1"],
+                        "preSql": [
+                            "delete from mytest"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:postgresql://127.0.0.1:5432/postgres",
+                                "table": ["mytest"]
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": 1
+            }
+        }
+    }
+}
