@@ -1,0 +1,54 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "postgresqlreader",
+                    "parameter": {
+                        "username": "postgres",
+                        "password": "postgres",
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:postgresql://192.168.0.1:5432/postgres"],
+                                "table": ["example"]
+                            }
+                        ],
+                        "column": [
+                            "id",
+                            "column1",
+                            "column2"
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "postgresqlwriter",
+                    "parameter": {
+                        "encoding": "UTF-8",
+                        "username": "postgres",
+                        "password": "postgres",
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:postgresql://192.168.0.2:5432/postgres",
+                                "table": ["example_copy"]
+                            }
+                        ],
+                        "column": [
+                            "id",
+                            "column1",
+                            "column2"
+                        ]
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "byte": 1048576
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        }
+    }
+}
