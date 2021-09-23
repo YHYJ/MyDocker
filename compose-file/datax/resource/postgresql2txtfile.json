@@ -22,7 +22,7 @@
                         "dateFormat": "yyyy-MM-dd",
                         "fieldDelimiter": "|",
                         "fileName": "postgresql-example",
-                        "path": "/opt/resource/txtfilewriter_result",
+                        "path": "/opt/resource/result",
                         "writeMode": "truncate"
                     }
                 }
