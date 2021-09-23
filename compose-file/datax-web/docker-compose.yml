@@ -19,8 +19,8 @@ services:
       - 'datax-web-mysql'
     volumes:
       - '/etc/localtime:/etc/localtime'
-      - './system/job:/job/json'
-      - './system/jobhandler:/data/applogs/executor/jobhandler'
+      - './cache/system/job:/job/json'
+      - './cache/system/jobhandler:/data/applogs/executor/jobhandler'
       - 'applogs:/data/applogs/admin'
     network_mode: 'host'
     environment:
