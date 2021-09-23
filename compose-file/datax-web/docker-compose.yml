@@ -4,6 +4,8 @@
 # Created Time: 2021-09-22 17:46:36
 
 # Description: DataX离线数据同步工具/平台 —— web版
+# - 必须使用'host'网络模式，否则datax-web和mysql无法通信
+# - 访问`http://127.0.0.1:20080/index.html`，用户名密码是：admin/123456
 
 version: '2'
 services:
@@ -20,7 +22,7 @@ services:
       - './system/job:/job/json'
       - './system/jobhandler:/data/applogs/executor/jobhandler'
       - 'applogs:/data/applogs/admin'
-    network_mode: "host"
+    network_mode: 'host'
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -42,7 +44,7 @@ services:
     volumes:
       - '/etc/localtime:/etc/localtime'
       - 'mysql:/var/lib/mysql'
-    network_mode: "host"
+    network_mode: 'host'
     environment:
       TZ: 'Asia/Shanghai'
       MYSQL_USER: 'happylay'
