@@ -24,6 +24,9 @@ services:
     environment:
       TZ: 'Asia/Shanghai'
       INFLUXDB_UDP_ENABLED: 1
+      INFLUXDB_DB: 'influxdb'
+      INFLUXDB_USER: 'influxdb'
+      INFLUXDB_USER_PASSWORD: 'influxdb'
     labels:
       servicename: 'influxdb'
     logging:
