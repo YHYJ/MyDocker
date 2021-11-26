@@ -83,7 +83,7 @@ services:
       data: {}
     environment:
       TZ: 'Asia/Shanghai'
-      GF_PANELS_DISABLE_SANITIZE_HTML: 'true'
+      GF_PANELS_DISABLE_SANITIZE_HTML: true
     labels:
       servicename: 'grafana'
     logging:

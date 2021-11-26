@@ -21,7 +21,7 @@ services:
       sonarqube: {}
     environment:
       TZ: 'Asia/Shanghai'
-      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: true
     labels:
       servicename: 'sonarqube'
     logging:
