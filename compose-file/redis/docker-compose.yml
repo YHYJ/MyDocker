@@ -24,6 +24,7 @@ services:
       TZ: 'Asia/Shanghai'
     labels:
       servicename: 'redis'
+      com.centurylinklabs.watchtower.enable: true
     logging:
       driver: 'json-file'       # none, local, json-file(default), ...
       options:

@@ -27,6 +27,7 @@ services:
       POSTGRES_PASSWORD: 'postgres' # 默认密码
     labels:
       servicename: 'postgres'
+      com.centurylinklabs.watchtower.enable: true
     logging:
       driver: 'json-file'       # none, local, json-file(default), ...
       options:
