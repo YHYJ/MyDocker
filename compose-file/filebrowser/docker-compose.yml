@@ -1,0 +1,46 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2021-11-26 14:23:46
+
+# Description: Middleware or standalone app that provides a web-based file manager within a specified directory
+
+version: '3'
+services:
+  filebrowser:
+    image: 'filebrowser/filebrowser'
+    container_name: 'filebrowser'
+    hostname: 'filebrowser-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '127.0.0.1:8080:80'
+    volumes:
+      - '/etc/localtime:/etc/localtime'
+      - './root:/srv'
+      - './db/filebrowser.db:/database.db'
+      - './conf/filebrowser.json:/.filebrowser.json'
+    networks:
+      filebrowser: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'filebrowser'
+      com.centurylinklabs.watchtower.enable: true
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+
+volumes:
+  filebrowser:
+    name: 'filebrowser'
+
+
+networks:
+  filebrowser:
+    name: 'filebrowser'
