@@ -21,7 +21,7 @@ services:
       - '127.0.0.1:8883:8883'
       - '127.0.0.1:18083:18083'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'emqx-data:/opt/emqx/data'
       - 'emqx-etc:/opt/emqx/etc'
       - 'emqx-lib:/opt/emqx/lib'

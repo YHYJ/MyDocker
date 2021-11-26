@@ -16,7 +16,7 @@ services:
     ports:
       - '127.0.0.1:10086:10086'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'mrdoc-config:/app/MrDoc/config'
       - 'mrdoc-media:/app/MrDoc/media'
     networks:

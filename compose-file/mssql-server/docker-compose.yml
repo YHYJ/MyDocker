@@ -16,7 +16,7 @@ services:
     ports:
       - '127.0.0.1:1433:1433'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
     networks:
       mssql-server: {}
     environment:

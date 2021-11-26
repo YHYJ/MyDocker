@@ -16,7 +16,7 @@ services:
     ports:
       - '127.0.0.1:1880:1880'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'node-red:/data'
     networks:
       node-red: {}

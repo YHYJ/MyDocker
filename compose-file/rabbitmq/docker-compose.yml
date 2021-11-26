@@ -21,7 +21,7 @@ services:
       - '127.0.0.1:15672:15672'
       - '127.0.0.1:25672:25672'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'rabbitmq:/var/lib/rabbitmq'
     networks:
       rabbitmq: {}

@@ -19,7 +19,7 @@ services:
     ports:
       - '127.0.0.1:8086:8086'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'influxdb:/var/lib/influxdb'
     networks:
       data: {}
@@ -47,7 +47,7 @@ services:
     ports:
       - '127.0.0.1:8888:8888'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'chronograf:/var/lib/chronograf'
     networks:
       data: {}
@@ -75,7 +75,7 @@ services:
     ports:
       - '127.0.0.1:3000:3000'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'grafana:/var/lib/grafana'
       - './grafana/plugins:/var/lib/grafana/plugins'
       - './grafana/imgs:/usr/share/grafana/public/imgs'

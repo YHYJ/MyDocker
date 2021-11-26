@@ -16,7 +16,7 @@ services:
     ports:
       - '127.0.0.1:5434:5432'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'postgres-plv8:/var/lib/postgresql/data'
     networks:
       postgres-plv8: {}

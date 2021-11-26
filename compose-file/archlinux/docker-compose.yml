@@ -16,7 +16,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - './resource/pacman.conf:/etc/pacman.conf'
       - './resource/mirrorlist:/etc/pacman.d/mirrorlist'
       - './resource/archlinuxcn-mirrorlist:/etc/pacman.d/archlinuxcn-mirrorlist'

@@ -21,7 +21,7 @@ services:
       - '127.0.0.1:5500:5500'
       - '127.0.0.1:8080:8080'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - 'oracle:/u01/app/oracle'
     networks:
       oracle: {}

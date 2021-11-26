@@ -16,7 +16,7 @@ services:
     ports:
       - '127.0.0.1:8080:80'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - './root:/srv'
       - './db/filebrowser.db:/database.db'
       - './conf/filebrowser.json:/.filebrowser.json'

@@ -18,7 +18,7 @@ services:
     ports:
       - '127.0.0.1:3001:3001'
     volumes:
-      - '/etc/localtime:/etc/localtime'
+      - '/etc/localtime:/etc/localtime:ro'
       - '$HOME/Documents/AppCache/yyets:/opt/work/store'
     networks:
       yyets: {}
