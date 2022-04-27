@@ -41,43 +41,6 @@ services:
       gitlab: {}
     environment:
       TZ: 'Asia/Shanghai'
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://127.0.0.1:443'
-        letsencrypt['enable'] = false
-        high_availability['mountpoint'] = ['/etc/gitlab', '/var/opt/gitlab', '/var/log/gitlab']
-        nginx['enable'] = true
-        nginx['worker_processes'] = 2
-        nginx['worker_connections'] = 512
-        nginx['keepalive_timeout'] = 300
-        nginx['cache_max_size'] = '200MB'
-        nginx['redirect_http_to_https'] = true
-        nginx['redirect_http_to_https_port'] = 80
-        nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.crt'
-        nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.key'
-        unicorn['worker_processes'] = 1
-        unicorn['worker_memory_limit_min'] = '300 * 1 << 20'
-        unicorn['worker_memory_limit_max'] = '400 * 1 << 20'
-        unicorn['worker_timeout'] = 15
-        sidekiq['concurrency'] = 10
-        sidekiq_cluster['enable'] = false
-        sidekiq_cluster['ha'] = false
-        redis['maxclients'] = 100
-        postgresql['shared_buffers'] = '256MB'
-        postgresql['max_connections'] = 30
-        postgresql['work_mem'] = '8MB'
-        postgresql['maintenance_work_mem'] = '16MB'
-        postgresql['effective_cache_size'] = '1MB'
-        postgresql['checkpoint_timeout'] = '5min'
-        postgresql['checkpoint_warning'] = '30s'
-        mattermost['enable'] = false
-        mattermost_nginx['enable'] = false
-        gitlab_pages['enable'] = false
-        pages_nginx['enable'] = false
-        registry_external_url 'https://127.0.0.1:5005'
-        gitlab_rails['registry_host'] = '127.0.0.1'
-        gitlab_rails['registry_port'] = '5005'
-        registry_nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.crt'
-        registry_nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.key'
     labels:
       servicename: 'gitlab'
     logging:
