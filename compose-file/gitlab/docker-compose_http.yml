@@ -42,8 +42,45 @@ services:
         letsencrypt['enable'] = false                 # 是否使用Let‘s Encrypt证书
         nginx['enable'] = true                        # 是否启用GitLab内部Nginx
         nginx['listen_port'] = 80                     # Nginx监听端口
-        gitlab_rails['registry_enabled'] = false      # 不使用Container Registry
         high_availability['mountpoint'] = ['/etc/gitlab', '/var/opt/gitlab', '/var/log/gitlab']
+        # 轻量化 - 关闭不必要的功能
+        ## 镜像管理
+        registry['enable'] = false
+        registry_nginx['enable'] = false
+        gitlab_rails['registry_enabled'] = false
+        gitlab_rails['gitlab_default_projects_features_container_registry'] = false
+        ## 包管理
+        gitlab_rails['packages_enabled'] = false
+        gitlab_rails['dependency_proxy_enabled'] = false
+        ## GitLab Page
+        gitlab_pages['enable'] = false
+        pages_nginx['enable'] = false
+        gitlab_rails['usage_ping_enabled'] = false
+        ## 电子邮件
+        gitlab_rails['smtp_enable'] = false
+        gitlab_rails['gitlab_email_enabled'] = false
+        gitlab_rails['incoming_email_enabled'] = false
+        ## 个人使用不需要的功能（包括CD）
+        gitlab_kas['enable'] = false
+        gitlab_rails['gitlab_kas_enabled'] = false
+        gitlab_rails['terraform_state_enabled'] = false
+        gitlab_rails['kerberos_enabled'] = false
+        sentinel['enable'] = false
+        mattermost['enable'] = false
+        mattermost_nginx['enable'] = false
+        ## 使用情况统计
+        gitlab_rails['sentry_enabled'] = false
+        grafana['reporting_enabled'] = false
+        ## 监控和性能基准
+        prometheus_monitoring['enable'] = false
+        alertmanager['enable'] = false
+        node_exporter['enable'] = false
+        redis_exporter['enable'] = false
+        postgres_exporter['enable'] = false
+        pgbouncer_exporter['enable'] = false
+        gitlab_exporter['enable'] = false
+        grafana['enable'] = false
+        sidekiq['metrics_enabled'] = false
     labels:
       servicename: 'gitlab'
     logging:
