@@ -25,9 +25,9 @@ services:
     restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '22:22'       # SSH
-      - '80:80'       # HTTP
-      - '443:443'     # HTTPS
+      - '127.0.0.1:22:22'       # SSH（由于不需要暴露该端口，将其映射到主机的localhost即可）
+      - '127.0.0.1:80:80'       # HTTP
+      - '127.0.0.1:443:443'     # HTTPS
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - './config:/etc/gitlab'
@@ -46,8 +46,53 @@ services:
         nginx['redirect_http_to_https_port'] = 80     # 重定向的端口
         nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.crt'
         nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.key'
-        gitlab_rails['registry_enabled'] = false      # 不使用Container Registry
         high_availability['mountpoint'] = ['/etc/gitlab', '/var/opt/gitlab', '/var/log/gitlab']
+        # 轻量化 - 关闭不必要的功能
+        ## 镜像管理
+        registry['enable'] = false
+        registry_nginx['enable'] = false
+        gitlab_rails['registry_enabled'] = false
+        gitlab_rails['gitlab_default_projects_features_container_registry'] = false
+        ## 包管理
+        gitlab_rails['packages_enabled'] = false
+        gitlab_rails['dependency_proxy_enabled'] = false
+        ## GitLab Page
+        gitlab_pages['enable'] = false
+        pages_nginx['enable'] = false
+        gitlab_rails['usage_ping_enabled'] = false
+        ## 电子邮件
+        gitlab_rails['smtp_enable'] = false
+        gitlab_rails['gitlab_email_enabled'] = false
+        gitlab_rails['incoming_email_enabled'] = false
+        ## 个人使用不需要的功能（包括CI/CD）
+        gitlab_kas['enable'] = false
+        gitlab_rails['gitlab_kas_enabled'] = false
+        gitlab_rails['terraform_state_enabled'] = false
+        gitlab_rails['kerberos_enabled'] = false
+        gitlab_ci['gitlab_ci_all_broken_builds'] = false
+        gitlab_ci['gitlab_ci_add_pusher'] = false
+        sentinel['enable'] = false
+        mattermost['enable'] = false
+        mattermost_nginx['enable'] = false
+        ## 禁用PUMA集群模式
+        puma['worker_processes'] = 0
+        puma['min_threads'] = 1
+        puma['max_threads'] = 2
+        ## 降低后台守护进程并发数
+        sidekiq['max_concurrency'] = 5
+        ## 使用情况统计
+        gitlab_rails['sentry_enabled'] = false
+        grafana['reporting_enabled'] = false
+        ## 监控和性能基准
+        prometheus_monitoring['enable'] = false
+        alertmanager['enable'] = false
+        node_exporter['enable'] = false
+        redis_exporter['enable'] = false
+        postgres_exporter['enable'] = false
+        pgbouncer_exporter['enable'] = false
+        gitlab_exporter['enable'] = false
+        grafana['enable'] = false
+        sidekiq['metrics_enabled'] = false
     labels:
       servicename: 'gitlab'
     logging:
