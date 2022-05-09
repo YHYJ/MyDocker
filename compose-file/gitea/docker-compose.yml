@@ -36,8 +36,8 @@ services:
       RUN_MODE: 'prod'                          # 应用程序运行模式(dev, prod, test)，会影响性能和调试
       LFS_START_SERVER: true                    # git-lfs支持
       INSTALL_LOCK: false                       # 能否访问安装页面
-      DISABLE_REGISTRATION: false               # 是否允许用户注册
-      REQUIRE_SIGNIN_VIEW: false                # 是否只允许登录用户查看任何页面
+      DISABLE_REGISTRATION: false               # 是否禁用用户注册
+      REQUIRE_SIGNIN_VIEW: true                 # 是否只允许登录用户查看任何页面
       USER_UID: 1000                            # 在容器内运行Gitea的用户的UID
       USER_GID: 1000                            # 在容器内运行Gitea的用户的GID
       DB_TYPE: 'mysql'                          # 使用的数据库类型(mysql, postgres, mssql, sqlite3)
