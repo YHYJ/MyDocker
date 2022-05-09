@@ -60,14 +60,22 @@ services:
         gitlab_rails['smtp_enable'] = false
         gitlab_rails['gitlab_email_enabled'] = false
         gitlab_rails['incoming_email_enabled'] = false
-        ## 个人使用不需要的功能（包括CD）
+        ## 个人使用不需要的功能（包括CI/CD）
         gitlab_kas['enable'] = false
         gitlab_rails['gitlab_kas_enabled'] = false
         gitlab_rails['terraform_state_enabled'] = false
         gitlab_rails['kerberos_enabled'] = false
+        gitlab_ci['gitlab_ci_all_broken_builds'] = false
+        gitlab_ci['gitlab_ci_add_pusher'] = false
         sentinel['enable'] = false
         mattermost['enable'] = false
         mattermost_nginx['enable'] = false
+        ## 禁用PUMA集群模式
+        puma['worker_processes'] = 0
+        puma['min_threads'] = 1
+        puma['max_threads'] = 2
+        ## 降低后台守护进程并发数
+        sidekiq['max_concurrency'] = 5
         ## 使用情况统计
         gitlab_rails['sentry_enabled'] = false
         grafana['reporting_enabled'] = false
