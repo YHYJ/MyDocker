@@ -41,7 +41,7 @@ services:
       USER_UID: 1000                            # 在容器内运行Gitea的用户的UID
       USER_GID: 1000                            # 在容器内运行Gitea的用户的GID
       DB_TYPE: 'mysql'                          # 使用的数据库类型(mysql, postgres, mssql, sqlite3)
-      DB_HOST: 'db:3306'                        # 数据库主机地址和端口
+      DB_HOST: 'database:3306'                  # 数据库主机地址和端口
       DB_NAME: 'gitea'                          # 数据库名称
       DB_USER: 'gitea'                          # 数据库用户名
       DB_PASSWD: 'password4gitea'               # 数据库密码
