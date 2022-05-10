@@ -20,9 +20,8 @@ services:
       - '127.0.0.1:1080:1080'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - './conf/config.json:/etc/v2ray/config.json'
-      - './data/geosite.dat:/usr/share/v2ray/geosite.dat'
-      - './data/geoip.dat:/usr/share/v2ray/geoip.dat'
+      - './conf.json:/etc/v2ray'
+      - './data:/usr/share/v2ray'
     networks:
       v2ray: {}
     environment:
