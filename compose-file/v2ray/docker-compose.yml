@@ -1,0 +1,48 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2022-05-10 15:47:17
+
+# Description: V2Fly, a community-driven edition of V2Ray
+
+# 1. https://github.com/v2fly/v2ray-core
+
+version: '3'
+services:
+  v2ray:
+    image: 'v2fly/v2fly-core'
+    container_name: 'v2ray'
+    hostname: 'v2ray-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '127.0.0.1:1060:1060'
+      - '127.0.0.1:1080:1080'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './conf/config.json:/etc/v2ray/config.json'
+      - './data/geosite.dat:/usr/share/v2ray/geosite.dat'
+      - './data/geoip.dat:/usr/share/v2ray/geoip.dat'
+    networks:
+      v2ray: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'v2ray'
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+
+volumes:
+  v2ray:
+    name: 'v2ray'
+
+
+networks:
+  v2ray:
+    name: 'v2ray'
