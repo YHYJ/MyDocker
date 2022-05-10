@@ -4,8 +4,9 @@
 # Created Time: 2022-05-09 15:21:59
 
 # Description: Gitea: Git with a cup of tea - A painless self-hosted Git service
-#
-# latest标签安装的是发行版，因此指定使用稳定版标签
+
+# 1. https://gitea.io/zh-cn
+# 2. latest标签安装的是发行版，因此指定使用稳定版标签
 
 version: '3'
 services:
