@@ -20,7 +20,7 @@ services:
       - '127.0.0.1:1080:1080'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - './conf.json:/etc/v2ray'
+      - './config.json:/etc/v2ray'
       - './data:/usr/share/v2ray'
     networks:
       v2ray: {}
