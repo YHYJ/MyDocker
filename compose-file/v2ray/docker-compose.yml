@@ -21,7 +21,7 @@ services:
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - './config:/etc/v2ray'
-      - './data:/usr/share/v2ray'
+      - './data:/usr/share/v2ray'   # geo file
     networks:
       v2ray: {}
     environment:
