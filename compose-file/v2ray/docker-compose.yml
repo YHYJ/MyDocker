@@ -22,6 +22,8 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - './config:/etc/v2ray'
       - './data:/usr/share/v2ray'   # geo file
+      - './log/error.log:/var/log/v2ray/error.log'
+      - './log/access.log:/var/log/v2ray/access.log'
     networks:
       v2ray: {}
     environment:
