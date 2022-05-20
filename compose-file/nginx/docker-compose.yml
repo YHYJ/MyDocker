@@ -23,6 +23,8 @@ services:
       - './config/additional:/etc/nginx/additional'
       - './config/sites-available:/etc/nginx/sites-available'
       - './config/sites-enabled:/etc/nginx/sites-enabled'
+      - './www/MyServerName/public:/var/www/MyServerName/public'
+      - './log:/var/log/nginx'
     networks:
       nginx: {}
     environment:

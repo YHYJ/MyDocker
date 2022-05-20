@@ -32,8 +32,9 @@ services:
       SSH_DOMAIN: 'localhost'                   # 用于Gitea UI中显示的ssh克隆URL
       HTTP_PORT: 3000                           # HTTP监听的端口
       SSH_PORT: 22                              # 克隆URL中显示的SSH端口
+      ROOT_URL: 'http://localhost/'             # 覆盖自动生成的公共URL
       SSH_LISTEN_PORT: ${SSH_PORT}              # 内置SSH服务器的端口
-      APP_NAME: 'Gitea: Git with a cup of tea'  # 应用程序名称，在页面标题中使用
+      APP_NAME: "YJ's Gitea"                    # 应用程序名称，在页面标题中使用
       RUN_MODE: 'prod'                          # 应用程序运行模式(dev, prod, test)，会影响性能和调试
       LFS_START_SERVER: true                    # git-lfs支持
       INSTALL_LOCK: false                       # 能否访问安装页面
