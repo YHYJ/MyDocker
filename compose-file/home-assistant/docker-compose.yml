@@ -1,0 +1,32 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2022-05-23 15:26:36
+
+# Description: Open source home automation that puts local control and privacy first
+
+version: '3'
+services:
+  home-assistant:
+    image: 'homeassistant/home-assistant:2022.5'
+    container_name: 'home-assistant'
+    hostname: 'home-assistant-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '127.0.0.1:8123:8123'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './config:/config'
+    network_mode: "host"
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'home-assistant'
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
