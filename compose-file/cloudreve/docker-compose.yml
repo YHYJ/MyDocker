@@ -1,0 +1,78 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2022-05-26 14:52:26
+
+# Description: 支持多家云存储的云盘系统 (Self-hosted file management and sharing system, supports multiple storage providers)
+
+# 1. 初始管理员账户名和密码在日志中
+
+version: '3'
+services:
+  cloudreve:
+    image: 'cloudreve/cloudreve'
+    container_name: 'cloudreve'
+    hostname: 'cloudreve-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    depends_on:
+      - 'aria2'
+    ports:
+      - '127.0.0.1:5212:5212'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - 'download:/data'
+      - './cloudreve/uploads:/cloudreve/uploads'
+      - './cloudreve/conf.ini:/cloudreve/conf.ini'
+      - './cloudreve/cloudreve.db:/cloudreve/cloudreve.db'
+      - './cloudreve/avatar:/cloudreve/avatar'
+    networks:
+      service: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'cloudreve'
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+  aria2:
+    image: 'p3terx/aria2-pro'
+    container_name: 'aria2'
+    hostname: 'aria2-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - 'download:/data'
+      - './aria2/config:/config'
+    networks:
+      service: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+      RPC_SECRET: 'yj'
+      RPC_PORT: 6800
+    labels:
+      servicename: 'aria2'
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+
+volumes:
+  download:
+    name: 'Offline-Download'
+
+
+networks:
+  service:
+    name: 'My-Cloud-Service'
+    external: true
