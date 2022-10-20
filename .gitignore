@@ -2,3 +2,6 @@ plugins/
 imgs/
 cache/
 *.db
+
+# Apple Desktop Services Store
+.DS_Store
