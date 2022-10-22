@@ -1,7 +1,7 @@
 # README
 
 <!-- File: README.md -->
-<!-- Auther: YJ -->
+<!-- Author: YJ -->
 <!-- Email: yj1516268@outlook.com -->
 <!-- Created Time: 2022-05-10 16:11:57 -->
 
