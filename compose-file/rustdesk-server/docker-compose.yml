@@ -1,0 +1,73 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2023-01-04 16:05:19
+
+# Description: RustDesk server software including hbbs (rendezvous server) and hbbr (relay server) program
+#
+# hbbs: RustDesk ID注册服务器
+# hbbr: RustDesk中继服务器
+
+version: '3'
+services:
+  rustdesk-server-hbbs:
+    image: 'rustdesk/rustdesk-server'
+    container_name: 'rustdesk-server-hbbs'
+    hostname: 'rustdesk-server-hbbs-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    command: hbbs -r 0.0.0.0:21117 -k _   # 指定hbbr服务地址；禁止建立非加密连接
+    ports:
+      - '0.0.0.0:21115:21115'       # NAT类型测试
+      - '0.0.0.0:21116:21116'       # TCP打洞与连接服务
+      - '0.0.0.0:21116:21116/udp'   # ID注册与心跳服务
+      - '0.0.0.0:21118:21118'       # 支持网页客户端
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './hbbs:/root'
+    networks:
+      service: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'rustdesk-server-hbbs'
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+  rustdesk-server-hbbr:
+    image: 'rustdesk/rustdesk-server'
+    container_name: 'rustdesk-server-hbbr'
+    hostname: 'rustdesk-server-hbbr-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    command: hbbr -k _          # 禁止建立非加密连接
+    ports:
+      - '0.0.0.0:21117:21117'   # 中继端口
+      - '0.0.0.0:21119:21119'   # 支持网页客户端
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './hbbr:/root'
+    networks:
+      service: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'rustdesk-server-hbbr'
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+
+networks:
+  service:
+    name: 'My-Cloud-Service'
+    external: true
