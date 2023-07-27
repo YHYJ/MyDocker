@@ -18,7 +18,7 @@ services:
       - 'logs:/logs'
       - 'datalog:/datalog'
     networks:
-      kafka: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -43,7 +43,7 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - 'kafka:/kafka'
     networks:
-      kafka: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       KAFKA_ADVERTISED_HOST_NAME: '192.168.43.44'
@@ -71,5 +71,5 @@ volumes:
 
 
 networks:
-  kafka:
-    name: 'kafka'
+  docker-network:
+    name: 'Docker-Network'

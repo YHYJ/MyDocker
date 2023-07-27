@@ -14,18 +14,19 @@ services:
     restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
+      - '0.0.0.0:8000:8000'
       - '127.0.0.1:9000:9000'   # 8000为Agent功能端口，9000为HTTP端口，9443为HTTPS端口
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - '/var/run/docker.sock:/var/run/docker.sock'
       - 'portainer:/data'
     networks:
-      portainer: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
       servicename: 'portainer'
-      com.centurylinklabs.watchtower.enable: false  # 禁止Watchtower更新该Container
+      com.centurylinklabs.watchtower.enable: false
     logging:
       driver: 'json-file'       # none, local, json-file(default), ...
       options:
@@ -41,5 +42,5 @@ volumes:
 
 
 networks:
-  portainer:
-    name: 'portainer'
+  docker-network:
+    name: 'Docker-Network'

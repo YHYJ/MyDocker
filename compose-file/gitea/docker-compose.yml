@@ -19,13 +19,13 @@ services:
     depends_on:
       - 'database'
     ports:
-      - '127.0.0.1:22:22'       # SSH（由于不需要暴露该端口，将其映射到主机的localhost即可）
+      - '0.0.0.0:22:22'         # SSH
       - '127.0.0.1:3000:3000'   # HTTP_PORT
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - 'gitea:/data'
     networks:
-      gitea: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       DOMAIN: 'localhost'                       # 用于Gitea UI中显示的http克隆URL
@@ -33,13 +33,14 @@ services:
       HTTP_PORT: 3000                           # HTTP监听的端口
       SSH_PORT: 22                              # 克隆URL中显示的SSH端口
       ROOT_URL: 'http://localhost/'             # 覆盖自动生成的公共URL
-      SSH_LISTEN_PORT: ${SSH_PORT}              # 内置SSH服务器的端口
+      SSH_LISTEN_PORT: 22                       # 内置SSH服务器的端口
       APP_NAME: "YJ's Gitea"                    # 应用程序名称，在页面标题中使用
       RUN_MODE: 'prod'                          # 应用程序运行模式(dev, prod, test)，会影响性能和调试
       LFS_START_SERVER: true                    # git-lfs支持
       INSTALL_LOCK: false                       # 能否访问安装页面
       DISABLE_REGISTRATION: true                # 是否禁止用户注册
       REQUIRE_SIGNIN_VIEW: true                 # 是否只允许登录用户查看任何页面
+      DISABLE_USERS_PAGE: false                 # 是否隐藏用户探索页面
       USER_UID: 1000                            # 在容器内运行Gitea的用户的UID
       USER_GID: 1000                            # 在容器内运行Gitea的用户的GID
       DB_TYPE: 'mysql'                          # 使用的数据库类型(mysql, postgres, mssql, sqlite3)
@@ -67,7 +68,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'mysql:/var/lib/mysql'
     networks:
-      gitea: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       MYSQL_DATABASE: 'gitea'
@@ -93,5 +94,5 @@ volumes:
 
 
 networks:
-  gitea:
-    name: 'gitea'
+  docker-network:
+    name: 'Docker-Network'

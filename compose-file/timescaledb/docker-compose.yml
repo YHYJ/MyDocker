@@ -19,7 +19,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'timescaledb:/var/lib/postgresql/data'
     networks:
-      timescaledb: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       POSTGRES_DB: 'postgres'       # 默认数据库名
@@ -42,5 +42,5 @@ volumes:
 
 
 networks:
-  timescaledb:
-    name: 'timescaledb'
+  docker-network:
+    name: 'Docker-Network'

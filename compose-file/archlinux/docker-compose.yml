@@ -21,7 +21,7 @@ services:
       - './resource/mirrorlist:/etc/pacman.d/mirrorlist'
       - './resource/archlinuxcn-mirrorlist:/etc/pacman.d/archlinuxcn-mirrorlist'
     networks:
-      archlinux: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -36,5 +36,5 @@ services:
 
 
 networks:
-  archlinux:
-    name: 'archlinux'
+  docker-network:
+    name: 'Docker-Network'

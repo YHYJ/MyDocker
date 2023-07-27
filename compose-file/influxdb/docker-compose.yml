@@ -20,7 +20,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'influxdb:/var/lib/influxdb'
     networks:
-      influxdb: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       INFLUXDB_UDP_ENABLED: 1
@@ -44,5 +44,5 @@ volumes:
 
 
 networks:
-  influxdb:
-    name: 'influxdata'
+  docker-network:
+    name: 'Docker-Network'

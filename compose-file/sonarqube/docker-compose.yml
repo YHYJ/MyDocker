@@ -18,7 +18,7 @@ services:
     ports:
       - '9000:9000'
     networks:
-      sonarqube: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: true
@@ -34,5 +34,5 @@ services:
 
 
 networks:
-  sonarqube:
-    name: 'sonarqube'
+  docker-network:
+    name: 'Docker-Network'

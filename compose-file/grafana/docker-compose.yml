@@ -20,7 +20,7 @@ services:
       - 'grafana:/var/lib/grafana'
       - './plugins:/var/lib/grafana/plugins'
     networks:
-      grafana: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       GF_PANELS_DISABLE_SANITIZE_HTML: true
@@ -41,5 +41,5 @@ volumes:
 
 
 networks:
-  grafana:
-    name: 'grafana'
+  docker-network:
+    name: 'Docker-Network'

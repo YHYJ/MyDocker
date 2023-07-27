@@ -19,7 +19,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'postgres:/var/lib/postgresql/data'
     networks:
-      postgres: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       POSTGRES_DB: 'postgres'       # 默认数据库名
@@ -43,5 +43,5 @@ volumes:
 
 
 networks:
-  postgres:
-    name: 'postgres'
+  docker-network:
+    name: 'Docker-Network'

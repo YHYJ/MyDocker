@@ -18,7 +18,7 @@ services:
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
     networks:
-      mssql-server: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       ACCEPT_EULA: 'Y'
@@ -35,5 +35,5 @@ services:
 
 
 networks:
-  mssql-server:
-    name: 'mssql-server'
+  docker-network:
+    name: 'Docker-Network'

@@ -20,7 +20,7 @@ services:
       - './prometheus.yml:/etc/prometheus/prometheus.yml'
       - 'prometheus:/prometheus'
     networks:
-      prometheus: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -40,5 +40,5 @@ volumes:
 
 
 networks:
-  prometheus:
-    name: 'data-display'
+  docker-network:
+    name: 'Docker-Network'

@@ -22,7 +22,7 @@ services:
       - 'odoo:/var/lib/odoo'
       - 'odoo-extra_addons:/mnt/extra-addons'
     networks:
-      odoo-postgres: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       HOST: 'db'
@@ -47,9 +47,7 @@ services:
       - 'pg4odoo:/var/lib/postgres/data'
       - 'pg4odoo:/var/lib/postgresql/data'
     networks:
-      odoo-postgres:
-        aliases:
-          - 'db'
+      docker-network: {}
     environment:
       POSTGRES_DB: 'postgres'    # 默认数据库名
       POSTGRES_USER: 'odoo'
@@ -75,5 +73,5 @@ volumes:
 
 
 networks:
-  odoo-postgres:
-    name: 'odoo-postgres'
+  docker-network:
+    name: 'Docker-Network'

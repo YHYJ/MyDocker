@@ -24,7 +24,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'oracle:/u01/app/oracle'
     networks:
-      oracle: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -44,5 +44,5 @@ volumes:
 
 
 networks:
-  oracle:
-    name: 'oracle'
+  docker-network:
+    name: 'Docker-Network'

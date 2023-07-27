@@ -20,7 +20,7 @@ services:
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
     networks:
-      tensorflow: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -35,5 +35,5 @@ services:
 
 
 networks:
-  tensorflow:
-    name: 'tensorflow'
+  docker-network:
+    name: 'Docker-Network'

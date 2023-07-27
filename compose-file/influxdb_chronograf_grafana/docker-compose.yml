@@ -22,7 +22,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'influxdb:/var/lib/influxdb'
     networks:
-      data: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       INFLUXDB_DB: 'influxdb'
@@ -50,7 +50,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'chronograf:/var/lib/chronograf'
     networks:
-      data: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       INFLUXDB_URL: 'http://influxdb:8086'
@@ -80,7 +80,7 @@ services:
       - './grafana/plugins:/var/lib/grafana/plugins'
       - './grafana/imgs:/usr/share/grafana/public/imgs'
     networks:
-      data: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       GF_PANELS_DISABLE_SANITIZE_HTML: true
@@ -105,5 +105,5 @@ volumes:
 
 
 networks:
-  data:
-    name: 'influxdb-chronograf-grafana'
+  docker-network:
+    name: 'Docker-Network'

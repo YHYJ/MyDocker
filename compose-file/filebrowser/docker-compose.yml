@@ -21,7 +21,7 @@ services:
       - './db/filebrowser.db:/database.db'
       - './conf/filebrowser.json:/.filebrowser.json'
     networks:
-      filebrowser: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -42,5 +42,5 @@ volumes:
 
 
 networks:
-  filebrowser:
-    name: 'filebrowser'
+  docker-network:
+    name: 'Docker-Network'

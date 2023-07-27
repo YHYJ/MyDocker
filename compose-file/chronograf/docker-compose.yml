@@ -19,7 +19,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'chronograf:/var/lib/chronograf'
     networks:
-      chronograf: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -39,5 +39,5 @@ volumes:
 
 
 networks:
-  chronograf:
-    name: 'influxdata'
+  docker-network:
+    name: 'Docker-Network'

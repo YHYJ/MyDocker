@@ -16,7 +16,7 @@ services:
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
     networks:
-      helloworld: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -31,5 +31,5 @@ services:
 
 
 networks:
-  helloworld:
-    name: 'helloworld'
+  docker-network:
+    name: 'Docker-Network'

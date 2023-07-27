@@ -21,7 +21,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - '$HOME/Documents/AppCache/yyets:/opt/work/store'
     networks:
-      yyets: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -36,5 +36,5 @@ services:
 
 
 networks:
-  yyets:
-    name: 'yyets'
+  docker-network:
+    name: 'Docker-Network'

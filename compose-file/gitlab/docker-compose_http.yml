@@ -34,7 +34,7 @@ services:
       - 'data:/var/opt/gitlab'
       - 'logs:/var/log/gitlab'
     networks:
-      gitlab: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       GITLAB_OMNIBUS_CONFIG: |
@@ -110,5 +110,5 @@ volumes:
 
 
 networks:
-  gitlab:
-    name: 'gitlab'
+  docker-network:
+    name: 'Docker-Network'

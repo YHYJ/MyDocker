@@ -21,7 +21,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'wordpress:/var/www/html'
     networks:
-      wordpress-mysql: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       WORDPRESS_DB_HOST: 'db'
@@ -47,7 +47,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'mysql:/var/lib/mysql'
     networks:
-      wordpress-mysql: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       MYSQL_RANDOM_ROOT_PASSWORD: 'mysqlroot'
@@ -73,5 +73,5 @@ volumes:
 
 
 networks:
-  wordpress-mysql:
-    name: 'wordpress-mysql'
+  docker-network:
+    name: 'Docker-Network'

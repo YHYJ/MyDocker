@@ -24,7 +24,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'rabbitmq:/var/lib/rabbitmq'
     networks:
-      rabbitmq: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       RABBITMQ_DEFAULT_USER: 'guest'
@@ -46,5 +46,5 @@ volumes:
 
 
 networks:
-  rabbitmq:
-    name: 'rabbitmq'
+  docker-network:
+    name: 'Docker-Network'

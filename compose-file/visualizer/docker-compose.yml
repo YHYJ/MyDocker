@@ -21,7 +21,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - '/var/run/docker.sock:/var/run/docker.sock'
     networks:
-      visualizer: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -36,5 +36,5 @@ services:
 
 
 networks:
-  visualizer:
-    name: 'visualizer'
+  docker-network:
+    name: 'Docker-Network'

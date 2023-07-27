@@ -19,7 +19,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'node-red:/data'
     networks:
-      node-red: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -39,5 +39,5 @@ volumes:
 
 
 networks:
-  node-red:
-    name: 'node-red'
+  docker-network:
+    name: 'Docker-Network'

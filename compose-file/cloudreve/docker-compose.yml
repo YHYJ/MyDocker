@@ -27,7 +27,7 @@ services:
       - './cloudreve/cloudreve.db:/cloudreve/cloudreve.db'
       - './cloudreve/avatar:/cloudreve/avatar'
     networks:
-      service: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -50,8 +50,9 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'download:/data'
       - './aria2/config:/config'
+      - './aria2/downloads:/downloads'
     networks:
-      service: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
       RPC_SECRET: 'yj'
@@ -73,6 +74,5 @@ volumes:
 
 
 networks:
-  service:
-    name: 'My-Cloud-Service'
-    external: true
+  docker-network:
+    name: 'Docker-Network'

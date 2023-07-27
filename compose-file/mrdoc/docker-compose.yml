@@ -8,7 +8,7 @@
 version: '3'
 services:
   mrdoc:
-    image: 'jonnyan404/mrdoc-alpine'
+    image: 'zmister/mrdoc:v4'
     container_name: 'mrdoc'
     hostname: 'mrdoc-docker'
     restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
@@ -17,10 +17,11 @@ services:
       - '127.0.0.1:10086:10086'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - 'mrdoc-config:/app/MrDoc/config'
-      - 'mrdoc-media:/app/MrDoc/media'
+      - './source/MrDoc:/app/MrDoc'
+      - './config:/app/MrDoc/config'
+      - './media:/app/MrDoc/media'
     networks:
-      mrdoc: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -35,13 +36,6 @@ services:
         labels: 'servicename'
 
 
-volumes:
-  mrdoc-config:
-    name: 'mrdoc-config'
-  mrdoc-media:
-    name: 'mrdoc-media'
-
-
 networks:
-  mrdoc:
-    name: 'mrdoc'
+  docker-network:
+    name: 'Docker-Network'

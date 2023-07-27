@@ -16,7 +16,7 @@ services:
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
     networks:
-      binfmt: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -31,5 +31,5 @@ services:
 
 
 networks:
-  binfmt:
-    name: 'binfmt'
+  docker-network:
+    name: 'Docker-Network'

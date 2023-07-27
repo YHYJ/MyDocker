@@ -19,7 +19,7 @@ services:
       - '/etc/localtime:/etc/localtime:ro'
       - 'redis:/data'
     networks:
-      redis: {}
+      docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
     labels:
@@ -40,5 +40,5 @@ volumes:
 
 
 networks:
-  redis:
-    name: 'redis'
+  docker-network:
+    name: 'Docker-Network'
