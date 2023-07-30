@@ -1,0 +1,35 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2023-07-30 12:34:12
+
+# Description: The Free Software Media Browser
+
+version: '3'
+services:
+  jellyfin:
+    image: 'jellyfin/jellyfin'
+    container_name: 'jellyfin'
+    hostname: 'jellyfin-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - '127.0.0.1:8096:8096'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './config:/config'
+      - './cache:/cache'
+      - './media:/media'
+    user: '1000:1000'
+    network_mode: "host"
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'jellyfin'
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
