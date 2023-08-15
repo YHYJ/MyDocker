@@ -21,7 +21,7 @@ services:
       - '127.0.0.1:5212:5212'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - 'download:/data'
+      - 'download:/downloads'
       - './cloudreve/uploads:/cloudreve/uploads'
       - './cloudreve/conf.ini:/cloudreve/conf.ini'
       - './cloudreve/cloudreve.db:/cloudreve/cloudreve.db'
@@ -46,16 +46,17 @@ services:
     hostname: 'aria2-docker'
     restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
+    ports:
+      - '127.0.0.1:6800:6800'
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
-      - 'download:/data'
+      - 'download:/downloads'
       - './aria2/config:/config'
-      - './aria2/downloads:/downloads'
     networks:
       docker-network: {}
     environment:
       TZ: 'Asia/Shanghai'
-      RPC_SECRET: 'yj'
+      RPC_SECRET: '自定义TOKEN'
       RPC_PORT: 6800
     labels:
       servicename: 'aria2'
@@ -70,7 +71,7 @@ services:
 
 volumes:
   download:
-    name: 'Offline-Download'
+    name: 'Aria2-Download'
 
 
 networks:
