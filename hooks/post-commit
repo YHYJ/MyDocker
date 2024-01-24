@@ -19,7 +19,17 @@ Depends:
 commit_hash=$(git rev-parse --short HEAD)
 
 # 复制哈希值到系统剪贴板（-n参数表示不换行）
-echo -n "$commit_hash" | xsel --clipboard --input
+case "$(uname -s)" in
+  Linux)
+    echo -n "$commit_hash" | xsel --clipboard --input
+    ;;
+  Darwin)
+    echo -n "$commit_hash" | pbcopy
+    ;;
+  *)
+    echo "Unsupported platform"
+    ;;
+esac
 
 # 输出提示信息
 echo -e "\x1b[35m-----\x1b[0m\x1b[36m最新commit哈希值已复制\x1b[0m\x1b[35m-----\x1b[0m"
