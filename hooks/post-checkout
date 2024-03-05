@@ -6,14 +6,16 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2022-10-25 11:00:39
 
-Description: Git hook，checkout后将子模块也切换到同名分支
+Description: Git 钩子，git switch 后将子模块也切换到同名分支
 
 Attentions:
--
+- 为了避免在执行 git checkout 时运行该钩子，请设置 SKIP_GIT_CHECKOUT=1
 
 Depends:
 -
 !
+
+[ "$SKIP_GIT_CHECKOUT" = 1 ] && exit 0
 
 ####################################################################
 #+++++++++++++++++++++++++ Define Variable ++++++++++++++++++++++++#
@@ -29,6 +31,8 @@ parent_name=$(basename "$(realpath .)")
 parent_path=$(realpath .)
 # 获取父模块当前所在分支
 parent_current_branch=$(git symbolic-ref --short HEAD)
+# 获取所有子模块名
+submodules=$(git submodule status | awk '{print $2}')
 
 ####################################################################
 #+++++++++++++++++++++++++ Define Function ++++++++++++++++++++++++#
@@ -38,9 +42,9 @@ function getBranchs() {
   git branch -r | awk -F/ '{print $2}' | awk '{printf "%s ", $0} END {print ""}' | sed 's/ *$//'
 }
 
-function isGitRepo() {
-  # 判断给定的文件夹是不是git仓库根目录
-  if [ "$(pwd)" = "$(git rev-parse --show-toplevel)" ]; then
+function isSubmodule() {
+  # 判断给定的文件夹是不是子模块
+  if [[ "${submodules[*]}" =~ $(git rev-parse --show-toplevel | xargs basename) ]]; then
     return "$normal"
   fi
   return "$err_file"
@@ -54,10 +58,10 @@ function haveBranch() {
   return "$err_file"
 }
 
-function checkoutBranch() {
+function switchBranch() {
   # 切换分支
   cd "$1" || exit "$err_file"
-  git checkout --quiet "$2"
+  git switch --quiet "$2"
 }
 
 ####################################################################
@@ -70,24 +74,25 @@ echo -e "\x1b[1m$parent_name\x1b[0m: \x1b[35;40;1m$parent_current_branch\x1b[0m 
 # 遍历仓库文件
 for file in "$parent_path"/*; do
   if [ -d "$file" ]; then
+    # 进到仓库下的文件夹中
     cd "$file" || exit "$err_file"
     # 判断是否是git仓库
-    if isGitRepo "$file"; then
+    if isSubmodule "$file"; then
       # 获取子模块所有分支名
       submodule_branchs=$(getBranchs)
       # 判断子模块是否有主仓库同名分支
       if haveBranch "$PWD"; then
-        # 获取子模块名（TODO：可更新？）
-        sub_name=$(basename "$(realpath "$PWD")")
+        # 获取仓库名
+        sub_name=$(git rev-parse --show-toplevel | xargs basename)
         # 获取子模块当前分支名
         pre_sub_branch=$(git symbolic-ref --short HEAD 2> /dev/null || echo "")
         # 检查子模块当前分支名是否与父模块当前分支名相同
         if [[ "$pre_sub_branch" == "$parent_current_branch" ]]; then
-          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[35;40;1m$pre_sub_branch\x1b[0m [\x1b[36m$repo_branchs\x1b[0m]"
+          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[35;40;1m$pre_sub_branch\x1b[0m [\x1b[36m$submodule_branchs\x1b[0m]"
         else
-          checkoutBranch "$file" "$parent_current_branch"
+          switchBranch "$file" "$parent_current_branch"
           post_sub_branch=$(git symbolic-ref --short HEAD)
-          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[34m$pre_sub_branch\x1b[0m -> \x1b[35;40;1m$post_sub_branch\x1b[0m [\x1b[36m$repo_branchs\x1b[0m]"
+          echo -e "\x1b[4C\x1b[1m$sub_name\x1b[0m: \x1b[34m$pre_sub_branch\x1b[0m -> \x1b[35;40;1m$post_sub_branch\x1b[0m [\x1b[36m$submodule_branchs\x1b[0m]"
         fi
       fi
     fi

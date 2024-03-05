@@ -6,7 +6,7 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2023-10-08 13:57:32
 
-Description: Git hook，commit后获取commit hash
+Description: Git 钩子，git commit 后获取 hash
 
 Attentions:
 -
@@ -17,19 +17,35 @@ Depends:
 
 # 获取最新commit哈希值
 commit_hash=$(git rev-parse --short HEAD)
+# 获取系统类型信息
+kernel=$(uname -s)
+
+function successInfo() {
+  echo -e "\x1b[35m-----\x1b[0m\x1b[36m最新commit哈希值已复制\x1b[0m\x1b[35m-----\x1b[0m"
+}
 
 # 复制哈希值到系统剪贴板（-n参数表示不换行）
-case "$(uname -s)" in
+case $kernel in
   Linux)
-    echo -n "$commit_hash" | xsel --clipboard --input
+    case $XDG_SESSION_TYPE in
+      x11)
+        echo -n "$commit_hash" | xsel --clipboard --input
+        successInfo
+        ;;
+      wayland)
+        echo -n "$commit_hash" | wl-copy
+        successInfo
+        ;;
+      *)
+        echo "Unsupported $XDG_SESSION_TYPE"
+        ;;
+    esac
     ;;
   Darwin)
     echo -n "$commit_hash" | pbcopy
+    successInfo
     ;;
   *)
-    echo "Unsupported platform"
+    echo "Unsupported $kernel"
     ;;
 esac
-
-# 输出提示信息
-echo -e "\x1b[35m-----\x1b[0m\x1b[36m最新commit哈希值已复制\x1b[0m\x1b[35m-----\x1b[0m"
