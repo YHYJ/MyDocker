@@ -1,0 +1,69 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2024-03-22 16:19:50
+
+# Description: Windows in a Docker container.
+#
+# Value  - Description            - Source      - Transfer - Size
+# win11  - Windows 11 Pro         - Microsoft   - Fast     - 6.4 GB
+# win10  - Windows 10 Pro         - Microsoft   - Fast     - 5.8 GB
+# ltsc10 - Windows 10 LTSC        - Microsoft   - Fast     - 4.6 GB
+# win81  - Windows 8.1 Pro        - Microsoft   - Fast     - 4.2 GB
+# win7   - Windows 7 SP1          - Bob Pony    - Medium   - 3.0 GB
+# vista  - Windows Vista SP2      - Bob Pony    - Medium   - 3.6 GB
+# winxp  - Windows XP SP3         - Bob Pony    - Medium   - 0.6 GB
+# 2022   - Windows Server 2022    - Microsoft   - Fast     - 4.7 GB
+# 2019   - Windows Server 2019    - Microsoft   - Fast     - 5.3 GB
+# 2016   - Windows Server 2016    - Microsoft   - Fast     - 6.5 GB
+# 2012   - Windows Server 2012 R2 - Microsoft   - Fast     - 4.3 GB
+# 2008   - Windows Server 2008 R2 - Microsoft   - Fast     - 3.0 GB
+# core11 - Tiny 11 Core           - Archive.org - Slow     - 2.1 GB
+# tiny11 - Tiny 11                - Archive.org - Slow     - 3.8 GB
+# tiny10 - Tiny 10                - Archive.org - Slow     - 3.6 GB
+
+version: "3"
+services:
+  windows:
+    image: "dockurr/windows"
+    container_name: "windows"
+    hostname: "windows-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    devices:
+      - "/dev/kvm"
+    cap_add:
+      - "NET_ADMIN"
+    ports:
+      - "127.0.0.1:8006:8006"
+      - "127.0.0.1:3389:3389/tcp"
+      - "127.0.0.1:3389:3389/udp"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "$HOME/Documents/Docker/Run/Windows:/storage" # Windows 存储位置，可以将自己下载的 ISO 文件重命名为 custom.iso 放到该位置以跳过下载
+    stop_grace_period: "2m"
+    networks:
+      docker-network: {}
+    environment:
+      TZ: "Asia/Shanghai"
+      VERSION: "win11"
+      RAM_SIZE: "4G"
+      CPU_CORES: "4"
+      DISK_SIZE: "128G"
+    labels:
+      servicename: "windows"
+    logging:
+      driver: "json-file" # none, local, json-file(default), ...
+      options:
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
+
+volumes:
+  windows:
+    name: "windows"
+
+networks:
+  docker-network:
+    name: "Docker-Network"
