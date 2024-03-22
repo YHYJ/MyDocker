@@ -7,43 +7,41 @@
 
 # 1. https://github.com/v2fly/v2ray-core
 
-version: '3'
+version: "3"
 services:
   v2ray:
-    image: 'v2fly/v2fly-core'
-    container_name: 'v2ray'
-    hostname: 'v2ray-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "v2fly/v2fly-core"
+    container_name: "v2ray"
+    hostname: "v2ray-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:1060:1060'
-      - '127.0.0.1:1080:1080'
+      - "127.0.0.1:1060:1060"
+      - "127.0.0.1:1080:1080"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - './config:/etc/v2ray'
-      - './data:/usr/share/v2ray'
-      - './log/error.log:/var/log/v2ray/error.log'
-      - './log/access.log:/var/log/v2ray/access.log'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./config:/etc/v2ray"
+      - "./data:/usr/share/v2ray"
+      - "./log/error.log:/var/log/v2ray/error.log"
+      - "./log/access.log:/var/log/v2ray/access.log"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
     labels:
-      servicename: 'v2ray'
+      servicename: "v2ray"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   v2ray:
-    name: 'v2ray'
-
+    name: "v2ray"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

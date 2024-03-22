@@ -8,91 +8,89 @@
 # 1. https://gitea.io/zh-cn
 # 2. latest标签安装的是发行版，因此指定使用稳定版标签
 
-version: '3'
+version: "3"
 services:
   gitea:
-    image: 'gitea/gitea:1.16.7'
-    container_name: 'gitea'
-    hostname: 'gitea-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "gitea/gitea:1.16.7"
+    container_name: "gitea"
+    hostname: "gitea-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     depends_on:
-      - 'database'
+      - "database"
     ports:
-      - '0.0.0.0:22:22'         # SSH
-      - '127.0.0.1:3000:3000'   # HTTP_PORT
+      - "0.0.0.0:22:22" # SSH
+      - "127.0.0.1:3000:3000" # HTTP_PORT
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'gitea:/data'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "gitea:/data"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      DOMAIN: 'localhost'                       # 用于Gitea UI中显示的http克隆URL
-      SSH_DOMAIN: 'localhost'                   # 用于Gitea UI中显示的ssh克隆URL
-      HTTP_PORT: 3000                           # HTTP监听的端口
-      SSH_PORT: 22                              # 克隆URL中显示的SSH端口
-      ROOT_URL: 'http://localhost/'             # 覆盖自动生成的公共URL
-      SSH_LISTEN_PORT: 22                       # 内置SSH服务器的端口
-      APP_NAME: "YJ's Gitea"                    # 应用程序名称，在页面标题中使用
-      RUN_MODE: 'prod'                          # 应用程序运行模式(dev, prod, test)，会影响性能和调试
-      LFS_START_SERVER: true                    # git-lfs支持
-      INSTALL_LOCK: false                       # 能否访问安装页面
-      DISABLE_REGISTRATION: true                # 是否禁止用户注册
-      REQUIRE_SIGNIN_VIEW: true                 # 是否只允许登录用户查看任何页面
-      DISABLE_USERS_PAGE: false                 # 是否隐藏用户探索页面
-      USER_UID: 1000                            # 在容器内运行Gitea的用户的UID
-      USER_GID: 1000                            # 在容器内运行Gitea的用户的GID
-      DB_TYPE: 'mysql'                          # 使用的数据库类型(mysql, postgres, mssql, sqlite3)
-      DB_HOST: 'database:3306'                  # 数据库主机地址和端口
-      DB_NAME: 'gitea'                          # 数据库名称
-      DB_USER: 'gitea'                          # 数据库用户名
-      DB_PASSWD: 'password4gitea'               # 数据库密码
+      TZ: "Asia/Shanghai"
+      DOMAIN: "localhost" # 用于Gitea UI中显示的http克隆URL
+      SSH_DOMAIN: "localhost" # 用于Gitea UI中显示的ssh克隆URL
+      HTTP_PORT: 3000 # HTTP监听的端口
+      SSH_PORT: 22 # 克隆URL中显示的SSH端口
+      ROOT_URL: "http://localhost/" # 覆盖自动生成的公共URL
+      SSH_LISTEN_PORT: 22 # 内置SSH服务器的端口
+      APP_NAME: "YJ's Gitea" # 应用程序名称，在页面标题中使用
+      RUN_MODE: "prod" # 应用程序运行模式(dev, prod, test)，会影响性能和调试
+      LFS_START_SERVER: true # git-lfs支持
+      INSTALL_LOCK: false # 能否访问安装页面
+      DISABLE_REGISTRATION: true # 是否禁止用户注册
+      REQUIRE_SIGNIN_VIEW: true # 是否只允许登录用户查看任何页面
+      DISABLE_USERS_PAGE: false # 是否隐藏用户探索页面
+      USER_UID: 1000 # 在容器内运行Gitea的用户的UID
+      USER_GID: 1000 # 在容器内运行Gitea的用户的GID
+      DB_TYPE: "mysql" # 使用的数据库类型(mysql, postgres, mssql, sqlite3)
+      DB_HOST: "database:3306" # 数据库主机地址和端口
+      DB_NAME: "gitea" # 数据库名称
+      DB_USER: "gitea" # 数据库用户名
+      DB_PASSWD: "password4gitea" # 数据库密码
     labels:
-      servicename: 'gitea'
+      servicename: "gitea"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
   database:
-    image: 'mysql:8'
-    container_name: 'mysql'
-    hostname: 'mysql-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "mysql:8"
+    container_name: "mysql"
+    hostname: "mysql-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'mysql:/var/lib/mysql'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "mysql:/var/lib/mysql"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      MYSQL_DATABASE: 'gitea'
-      MYSQL_USER: 'gitea'
-      MYSQL_PASSWORD: 'password4gitea'
-      MYSQL_ROOT_PASSWORD: 'rootpassword4gitea'
+      TZ: "Asia/Shanghai"
+      MYSQL_DATABASE: "gitea"
+      MYSQL_USER: "gitea"
+      MYSQL_PASSWORD: "password4gitea"
+      MYSQL_ROOT_PASSWORD: "rootpassword4gitea"
     labels:
-      servicename: 'database'
+      servicename: "database"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   gitea:
-    name: 'gitea-data'
+    name: "gitea-data"
   mysql:
-    name: 'mysql-data'
-
+    name: "mysql-data"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

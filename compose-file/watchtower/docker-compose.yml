@@ -6,35 +6,34 @@
 # Description: A process for automating Docker container base image updates
 # https://containrrr.dev/watchtower
 
-version: '3'
+version: "3"
 services:
   watchtower:
-    image: 'containrrr/watchtower'
-    container_name: 'watchtower'
-    hostname: 'watchtower-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "containrrr/watchtower"
+    container_name: "watchtower"
+    hostname: "watchtower-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: true
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
       WATCHTOWER_CLEANUP: true
-      WATCHTOWER_POLL_INTERVAL: 86400     # 镜像更新轮询1天
-      WATCHTOWER_LABEL_ENABLE: true       # 更新com.centurylinklabs.watchtower.enable标签设置为true的容器
+      WATCHTOWER_POLL_INTERVAL: 86400 # 镜像更新轮询1天
+      WATCHTOWER_LABEL_ENABLE: true # 更新com.centurylinklabs.watchtower.enable标签设置为true的容器
     labels:
-      servicename: 'watchtower'
+      servicename: "watchtower"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

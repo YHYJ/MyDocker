@@ -16,27 +16,27 @@
 #   ......
 # ---------------------------------------------- #
 
-version: '3'
+version: "3"
 services:
   gitlab:
-    image: 'gitlab/gitlab-ce'
-    container_name: 'gitlab'
-    hostname: 'gitlab-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "gitlab/gitlab-ce"
+    container_name: "gitlab"
+    hostname: "gitlab-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:22:22'       # SSH（由于不需要暴露该端口，将其映射到主机的localhost即可）
-      - '127.0.0.1:80:80'       # HTTP
-      - '127.0.0.1:443:443'     # HTTPS
+      - "127.0.0.1:22:22" # SSH（由于不需要暴露该端口，将其映射到主机的localhost即可）
+      - "127.0.0.1:80:80" # HTTP
+      - "127.0.0.1:443:443" # HTTPS
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - './config:/etc/gitlab'
-      - 'data:/var/opt/gitlab'
-      - 'logs:/var/log/gitlab'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./config:/etc/gitlab"
+      - "data:/var/opt/gitlab"
+      - "logs:/var/log/gitlab"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://127.0.0.1'              # 外部访问地址（HTTP或HTTPS，使用默认端口则不用加端口）
         letsencrypt['enable'] = false                 # 是否使用Let‘s Encrypt证书
@@ -94,25 +94,23 @@ services:
         grafana['enable'] = false
         sidekiq['metrics_enabled'] = false
     labels:
-      servicename: 'gitlab'
+      servicename: "gitlab"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   config:
-    name: 'gitlab-config'
+    name: "gitlab-config"
   data:
-    name: 'gitlab-data'
+    name: "gitlab-data"
   logs:
-    name: 'gitlab-logs'
-
+    name: "gitlab-logs"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

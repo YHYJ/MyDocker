@@ -7,34 +7,33 @@
 #
 # - 必须运行在manager上
 
-version: '3'
+version: "3"
 services:
   visualizer:
-    image: 'dockersamples/visualizer'
-    container_name: 'visualizer'
-    hostname: 'visualizer-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "dockersamples/visualizer"
+    container_name: "visualizer"
+    hostname: "visualizer-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:8080:8080'
+      - "127.0.0.1:8080:8080"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
     labels:
-      servicename: 'visualizer'
+      servicename: "visualizer"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

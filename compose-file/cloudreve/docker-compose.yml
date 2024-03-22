@@ -7,73 +7,71 @@
 
 # 1. 初始管理员账户名和密码在日志中
 
-version: '3'
+version: "3"
 services:
   cloudreve:
-    image: 'cloudreve/cloudreve'
-    container_name: 'cloudreve'
-    hostname: 'cloudreve-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "cloudreve/cloudreve"
+    container_name: "cloudreve"
+    hostname: "cloudreve-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     depends_on:
-      - 'aria2'
+      - "aria2"
     ports:
-      - '127.0.0.1:5212:5212'
+      - "127.0.0.1:5212:5212"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'download:/downloads'
-      - './cloudreve/uploads:/cloudreve/uploads'
-      - './cloudreve/conf.ini:/cloudreve/conf.ini'
-      - './cloudreve/cloudreve.db:/cloudreve/cloudreve.db'
-      - './cloudreve/avatar:/cloudreve/avatar'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "download:/downloads"
+      - "./cloudreve/uploads:/cloudreve/uploads"
+      - "./cloudreve/conf.ini:/cloudreve/conf.ini"
+      - "./cloudreve/cloudreve.db:/cloudreve/cloudreve.db"
+      - "./cloudreve/avatar:/cloudreve/avatar"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
     labels:
-      servicename: 'cloudreve'
+      servicename: "cloudreve"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
   aria2:
-    image: 'p3terx/aria2-pro'
-    container_name: 'aria2'
-    hostname: 'aria2-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "p3terx/aria2-pro"
+    container_name: "aria2"
+    hostname: "aria2-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:6800:6800'
+      - "127.0.0.1:6800:6800"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'download:/downloads'
-      - './aria2/config:/config'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "download:/downloads"
+      - "./aria2/config:/config"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      RPC_SECRET: '自定义TOKEN'
+      TZ: "Asia/Shanghai"
+      RPC_SECRET: "自定义TOKEN"
       RPC_PORT: 6800
     labels:
-      servicename: 'aria2'
+      servicename: "aria2"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   download:
-    name: 'Aria2-Download'
-
+    name: "Aria2-Download"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

@@ -5,59 +5,57 @@
 
 # Description: An Open-Source, Cloud-Native, Massive-Scalable MQTT Broker for IoT
 
-version: '3'
+version: "3"
 services:
   emqx:
-    image: 'emqx/emqx:4.2.11'
-    container_name: 'emqx'
-    hostname: 'emqx-docker'
-    restart: 'unless-stopped'  # no, unless-stopped, always, on-failure:<max-retries>
+    image: "emqx/emqx:4.2.11"
+    container_name: "emqx"
+    hostname: "emqx-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:1883:1883'
-      - '127.0.0.1:8081:8081'
-      - '127.0.0.1:8083:8083'
-      - '127.0.0.1:8084:8084'
-      - '127.0.0.1:8883:8883'
-      - '127.0.0.1:18083:18083'
+      - "127.0.0.1:1883:1883"
+      - "127.0.0.1:8081:8081"
+      - "127.0.0.1:8083:8083"
+      - "127.0.0.1:8084:8084"
+      - "127.0.0.1:8883:8883"
+      - "127.0.0.1:18083:18083"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'emqx-data:/opt/emqx/data'
-      - 'emqx-etc:/opt/emqx/etc'
-      - 'emqx-lib:/opt/emqx/lib'
-      - 'emqx-log:/opt/emqx/log'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "emqx-data:/opt/emqx/data"
+      - "emqx-etc:/opt/emqx/etc"
+      - "emqx-lib:/opt/emqx/lib"
+      - "emqx-log:/opt/emqx/log"
     networks:
       docker-network:
         aliases:
           - docker-network.emqx.io
     environment:
-      TZ: 'Asia/Shanghai'
-      EMQX_NAME: 'emqx'
-      EMQX_HOST: 'docker-network.emqx.io'
-      EMQX_CLUSTER__DISCOVERY: 'static'
-      EMQX_CLUSTER__STATIC__SEEDS: 'emqx@docker-network.emqx.io'
+      TZ: "Asia/Shanghai"
+      EMQX_NAME: "emqx"
+      EMQX_HOST: "docker-network.emqx.io"
+      EMQX_CLUSTER__DISCOVERY: "static"
+      EMQX_CLUSTER__STATIC__SEEDS: "emqx@docker-network.emqx.io"
     labels:
-      servicename: 'emqx'
+      servicename: "emqx"
     logging:
-      driver: 'json-file'      # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   emqx-data:
-    name: 'emqx-data'
+    name: "emqx-data"
   emqx-etc:
-    name: 'emqx-etc'
+    name: "emqx-etc"
   emqx-lib:
-    name: 'emqx-lib'
+    name: "emqx-lib"
   emqx-log:
-    name: 'emqx-log'
-
+    name: "emqx-log"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

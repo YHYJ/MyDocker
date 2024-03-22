@@ -5,35 +5,34 @@
 
 # Description: Official container images for Microsoft SQL Server on Linux for Docker Engine
 
-version: '3'
+version: "3"
 services:
   mssql-server:
-    image: 'mcr.microsoft.com/mssql/server'
-    container_name: 'mssql-server'
-    hostname: 'mssql-server-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: "mssql-server"
+    hostname: "mssql-server-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:1433:1433'
+      - "127.0.0.1:1433:1433"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
+      - "/etc/localtime:/etc/localtime:ro"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      ACCEPT_EULA: 'Y'
-      SA_PASSWORD: 'Ms-SQL-Server'
+      TZ: "Asia/Shanghai"
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Ms-SQL-Server"
     labels:
-      servicename: 'mssql-server'
+      servicename: "mssql-server"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

@@ -5,65 +5,64 @@
 
 # Description: 服务仪表盘（Docker Sock由docker-socket-proxy代理）
 
-version: '3'
+version: "3"
 services:
   dockerproxy:
-    image: 'ghcr.io/tecnativa/docker-socket-proxy'
-    container_name: 'dockerproxy'
-    hostname: 'dockerproxy-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "ghcr.io/tecnativa/docker-socket-proxy"
+    container_name: "dockerproxy"
+    hostname: "dockerproxy-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:2375:2375'
+      - "127.0.0.1:2375:2375"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '/var/run/docker.sock:/var/run/docker.sock'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      CONTAINERS: 1   # Allow access to viewing containers
-      SERVICES: 1     # Allow access to viewing services (necessary when using Docker Swarm)
-      TASKS: 1        # Allow access to viewing tasks (necessary when using Docker Swarm)
-      POST: 0         # Disallow any POST operations (effectively read-only)
+      TZ: "Asia/Shanghai"
+      CONTAINERS: 1 # Allow access to viewing containers
+      SERVICES: 1 # Allow access to viewing services (necessary when using Docker Swarm)
+      TASKS: 1 # Allow access to viewing tasks (necessary when using Docker Swarm)
+      POST: 0 # Disallow any POST operations (effectively read-only)
     labels:
-      servicename: 'dockerproxy'
+      servicename: "dockerproxy"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
   homepage:
-    image: 'ghcr.io/benphelps/homepage'
-    container_name: 'homepage'
-    hostname: 'homepage-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "ghcr.io/benphelps/homepage"
+    container_name: "homepage"
+    hostname: "homepage-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:3000:3000'
+      - "127.0.0.1:3000:3000"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - './config:/app/config'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./config:/app/config"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
       PUID: 1000
       PGID: 1000
     labels:
-      servicename: 'homepage'
+      servicename: "homepage"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

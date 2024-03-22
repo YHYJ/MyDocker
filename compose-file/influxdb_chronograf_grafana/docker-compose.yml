@@ -7,103 +7,100 @@
 #              Chronograf is a visualization tool for time series data in InfluxDB
 #              The official Grafana docker container
 
-
-version: '3'
+version: "3"
 services:
   influxdb:
-    image: 'influxdb'
-    container_name: 'influxdb'
-    hostname: 'influxdb-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "influxdb"
+    container_name: "influxdb"
+    hostname: "influxdb-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:8086:8086'
+      - "127.0.0.1:8086:8086"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'influxdb:/var/lib/influxdb'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "influxdb:/var/lib/influxdb"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      INFLUXDB_DB: 'influxdb'
-      INFLUXDB_USER: 'influxdb'
-      INFLUXDB_USER_PASSWORD: 'influxdb'
+      TZ: "Asia/Shanghai"
+      INFLUXDB_DB: "influxdb"
+      INFLUXDB_USER: "influxdb"
+      INFLUXDB_USER_PASSWORD: "influxdb"
     labels:
-      servicename: 'influxdb'
+      servicename: "influxdb"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
   chronograf:
-    image: 'chronograf'
-    container_name: 'chronograf'
-    hostname: 'chronograf-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "chronograf"
+    container_name: "chronograf"
+    hostname: "chronograf-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:8888:8888'
+      - "127.0.0.1:8888:8888"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'chronograf:/var/lib/chronograf'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "chronograf:/var/lib/chronograf"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      INFLUXDB_URL: 'http://influxdb:8086'
-      INFLUXDB_USERNAME: 'influxdb'
-      INFLUXDB_PASSWORD: 'influxdb'
+      TZ: "Asia/Shanghai"
+      INFLUXDB_URL: "http://influxdb:8086"
+      INFLUXDB_USERNAME: "influxdb"
+      INFLUXDB_PASSWORD: "influxdb"
     labels:
-      servicename: 'chronograf'
+      servicename: "chronograf"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
   grafana:
-    image: 'grafana/grafana'
-    container_name: 'grafana'
-    hostname: 'grafana-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "grafana/grafana"
+    container_name: "grafana"
+    hostname: "grafana-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:3000:3000'
+      - "127.0.0.1:3000:3000"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'grafana:/var/lib/grafana'
-      - './grafana/plugins:/var/lib/grafana/plugins'
-      - './grafana/imgs:/usr/share/grafana/public/imgs'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "grafana:/var/lib/grafana"
+      - "./grafana/plugins:/var/lib/grafana/plugins"
+      - "./grafana/imgs:/usr/share/grafana/public/imgs"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
       GF_PANELS_DISABLE_SANITIZE_HTML: true
     labels:
-      servicename: 'grafana'
+      servicename: "grafana"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   influxdb:
-    name: 'musketeer_influxdb'
+    name: "musketeer_influxdb"
   chronograf:
-    name: 'musketeer_chronograf'
+    name: "musketeer_chronograf"
   grafana:
-    name: 'musketeer_grafana'
-
+    name: "musketeer_grafana"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

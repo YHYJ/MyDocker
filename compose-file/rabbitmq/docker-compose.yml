@@ -5,46 +5,44 @@
 
 # Description: RabbitMQ is an open source multi-protocol messaging broker
 
-version: '3'
+version: "3"
 services:
   rabbitmq:
-    image: 'rabbitmq:management'
-    container_name: 'rabbitmq'
-    hostname: 'rabbitmq-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "rabbitmq:management"
+    container_name: "rabbitmq"
+    hostname: "rabbitmq-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:4369:4369'
-      - '127.0.0.1:5671:5671'
-      - '127.0.0.1:5672:5672'
-      - '127.0.0.1:15671:15671'
-      - '127.0.0.1:15672:15672'
-      - '127.0.0.1:25672:25672'
+      - "127.0.0.1:4369:4369"
+      - "127.0.0.1:5671:5671"
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15671:15671"
+      - "127.0.0.1:15672:15672"
+      - "127.0.0.1:25672:25672"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'rabbitmq:/var/lib/rabbitmq'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "rabbitmq:/var/lib/rabbitmq"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      RABBITMQ_DEFAULT_USER: 'guest'
-      RABBITMQ_DEFAULT_PASS: 'guest'
+      TZ: "Asia/Shanghai"
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
     labels:
-      servicename: 'rabbitmq'
+      servicename: "rabbitmq"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   rabbitmq:
-    name: 'rabbitmq'
-
+    name: "rabbitmq"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

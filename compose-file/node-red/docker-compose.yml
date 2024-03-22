@@ -5,39 +5,37 @@
 
 # Description:
 
-version: '3'
+version: "3"
 services:
   node-red:
-    image: 'nodered/node-red'
-    container_name: 'node-red'
-    hostname: 'node-red-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "nodered/node-red"
+    container_name: "node-red"
+    hostname: "node-red-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:1880:1880'
+      - "127.0.0.1:1880:1880"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'node-red:/data'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "node-red:/data"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
     labels:
-      servicename: 'node-red'
+      servicename: "node-red"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   node-red:
-    name: 'node-red'
-
+    name: "node-red"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

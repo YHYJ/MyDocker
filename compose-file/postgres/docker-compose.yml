@@ -5,43 +5,41 @@
 
 # Description: The PostgreSQL object-relational database system provides reliability and data integrity
 
-version: '3'
+version: "3"
 services:
   postgres:
-    image: 'postgres'
-    container_name: 'postgres'
-    hostname: 'postgres-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "postgres"
+    container_name: "postgres"
+    hostname: "postgres-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - '127.0.0.1:5432:5432'
+      - "127.0.0.1:5432:5432"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'postgres:/var/lib/postgresql/data'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "postgres:/var/lib/postgresql/data"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
-      POSTGRES_DB: 'postgres'       # 默认数据库名
-      POSTGRES_USER: 'postgres'     # 默认用户名
-      POSTGRES_PASSWORD: 'postgres' # 默认密码
+      TZ: "Asia/Shanghai"
+      POSTGRES_DB: "postgres" # 默认数据库名
+      POSTGRES_USER: "postgres" # 默认用户名
+      POSTGRES_PASSWORD: "postgres" # 默认密码
     labels:
-      servicename: 'postgres'
+      servicename: "postgres"
       com.centurylinklabs.watchtower.enable: true
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   postgres:
-    name: 'postgres'
-
+    name: "postgres"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"

@@ -8,41 +8,39 @@
 # - username: system
 # - password: oracle
 
-version: '3'
+version: "3"
 services:
   oracle:
-    image: 'absolutapps/oracle-12c-ee'
-    container_name: 'oracle'
-    hostname: 'oracle-docker'
-    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    image: "absolutapps/oracle-12c-ee"
+    container_name: "oracle"
+    hostname: "oracle-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: true
     ports:
-      - '127.0.0.1:1521:1521'
-      - '127.0.0.1:5500:5500'
-      - '127.0.0.1:8080:8080'
+      - "127.0.0.1:1521:1521"
+      - "127.0.0.1:5500:5500"
+      - "127.0.0.1:8080:8080"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - 'oracle:/u01/app/oracle'
+      - "/etc/localtime:/etc/localtime:ro"
+      - "oracle:/u01/app/oracle"
     networks:
       docker-network: {}
     environment:
-      TZ: 'Asia/Shanghai'
+      TZ: "Asia/Shanghai"
     labels:
-      servicename: 'oracle'
+      servicename: "oracle"
     logging:
-      driver: 'json-file'       # none, local, json-file(default), ...
+      driver: "json-file" # none, local, json-file(default), ...
       options:
-        max-size: '10m'
-        max-file: '3'
-        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
-        labels: 'servicename'
-
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
 
 volumes:
   oracle:
-    name: 'oracle'
-
+    name: "oracle"
 
 networks:
   docker-network:
-    name: 'Docker-Network'
+    name: "Docker-Network"
