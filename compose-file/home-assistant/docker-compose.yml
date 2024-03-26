@@ -5,7 +5,6 @@
 
 # Description: Open source home automation that puts local control and privacy first
 
-version: "3"
 services:
   home-assistant:
     image: "homeassistant/home-assistant:2022.5"

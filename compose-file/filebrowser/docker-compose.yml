@@ -5,7 +5,6 @@
 
 # Description: Middleware or standalone app that provides a web-based file manager within a specified directory
 
-version: "3"
 services:
   filebrowser:
     image: "filebrowser/filebrowser"

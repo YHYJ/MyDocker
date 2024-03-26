@@ -22,7 +22,6 @@
 # tiny11 - Tiny 11                - Archive.org - Slow     - 3.8 GB
 # tiny10 - Tiny 10                - Archive.org - Slow     - 3.6 GB
 
-version: "3"
 services:
   windows:
     image: "dockurr/windows"

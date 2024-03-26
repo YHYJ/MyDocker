@@ -5,7 +5,6 @@
 
 # Description: Prometheus is an open-source systems monitoring and alerting toolkit
 
-version: "3"
 services:
   prometheus:
     image: "prom/prometheus"

@@ -7,7 +7,6 @@
 # - 必须使用'host'网络模式，否则datax-web和mysql无法通信
 # - 访问`http://127.0.0.1:20080/index.html`，用户名密码是：admin/123456
 
-version: "2"
 services:
   datax-web:
     image: "happylay/datax-web:v2.1.1-standalone"

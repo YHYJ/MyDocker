@@ -5,7 +5,6 @@
 
 # Description: The official Grafana docker container
 
-version: "3"
 services:
   grafana:
     image: "grafana/grafana"

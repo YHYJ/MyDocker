@@ -5,7 +5,6 @@
 
 # Description: Official Docker images for the machine learning framework TensorFlow (http://www.tensorflow.org)
 
-version: "3"
 services:
   tensorflow:
     image: "tensorflow/tensorflow"

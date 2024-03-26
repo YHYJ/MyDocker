@@ -5,7 +5,6 @@
 
 # Description: Magical shell history Service
 
-version: "3"
 services:
   atuin:
     image: "ghcr.io/atuinsh/atuin:main"

@@ -8,7 +8,6 @@
 # - username: system
 # - password: oracle
 
-version: "3"
 services:
   oracle:
     image: "absolutapps/oracle-12c-ee"

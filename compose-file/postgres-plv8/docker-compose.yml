@@ -5,7 +5,6 @@
 
 # Description: Postgres 10 + plv8 v2.3.0
 
-version: "3"
 services:
   postgres-plv8:
     image: "pyramation/postgres-plv8"

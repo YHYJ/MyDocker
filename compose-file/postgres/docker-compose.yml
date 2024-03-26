@@ -5,7 +5,6 @@
 
 # Description: The PostgreSQL object-relational database system provides reliability and data integrity
 
-version: "3"
 services:
   postgres:
     image: "postgres"

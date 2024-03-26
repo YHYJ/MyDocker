@@ -5,7 +5,6 @@
 
 # Description: An open-source time-series database optimized for fast ingest and complex queries. Engineered up from PostgreSQL, packaged as an extension
 
-version: "3"
 services:
   timescaledb:
     image: "timescale/timescaledb:latest-pg12"

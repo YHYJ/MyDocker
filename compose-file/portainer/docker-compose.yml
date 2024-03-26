@@ -5,7 +5,6 @@
 
 # Description: Making Docker management easy. https://portainer.io
 
-version: "3"
 services:
   portainer:
     image: "portainer/portainer-ce"

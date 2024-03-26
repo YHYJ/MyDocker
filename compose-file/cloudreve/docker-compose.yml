@@ -7,7 +7,6 @@
 
 # 1. 初始管理员账户名和密码在日志中
 
-version: "3"
 services:
   cloudreve:
     image: "cloudreve/cloudreve"

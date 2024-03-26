@@ -5,7 +5,6 @@
 
 # Description: An Open-Source, Cloud-Native, Massive-Scalable MQTT Broker for IoT
 
-version: "3"
 services:
   emqx:
     image: "emqx/emqx:4.2.11"

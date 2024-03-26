@@ -5,7 +5,6 @@
 
 # Description: RabbitMQ is an open source multi-protocol messaging broker
 
-version: "3"
 services:
   rabbitmq:
     image: "rabbitmq:management"

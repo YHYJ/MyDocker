@@ -5,7 +5,6 @@
 
 # Description: The WordPress rich content management system can utilize plugins, widgets, and themes
 
-version: "3"
 services:
   wordpress:
     image: "wordpress"

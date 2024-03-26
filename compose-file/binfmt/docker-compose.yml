@@ -5,7 +5,6 @@
 
 # Description: 开启binfmt_misc支持
 
-version: "3"
 services:
   binfmt:
     image: "docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64"

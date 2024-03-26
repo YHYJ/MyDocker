@@ -7,7 +7,6 @@
 #
 # nyanmisaka/jellyfin是jellyfin成员针对中国用户特制版，开箱即用
 
-version: "3"
 services:
   jellyfin:
     image: "nyanmisaka/jellyfin"

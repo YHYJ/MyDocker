@@ -5,7 +5,6 @@
 
 # Description: Multi-Broker Apache Kafka Image
 
-version: "3"
 services:
   zookeeper:
     image: "zookeeper"

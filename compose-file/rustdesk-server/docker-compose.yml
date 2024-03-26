@@ -8,7 +8,6 @@
 # hbbs: RustDesk ID注册服务器
 # hbbr: RustDesk中继服务器
 
-version: "3"
 services:
   rustdesk-server-hbbs:
     image: "rustdesk/rustdesk-server"

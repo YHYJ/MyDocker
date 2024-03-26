@@ -8,7 +8,6 @@
 # 1. https://gitea.io/zh-cn
 # 2. latest标签安装的是发行版，因此指定使用稳定版标签
 
-version: "3"
 services:
   gitea:
     image: "gitea/gitea:1.16.7"

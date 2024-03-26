@@ -7,7 +7,6 @@
 #              Chronograf is a visualization tool for time series data in InfluxDB
 #              The official Grafana docker container
 
-version: "3"
 services:
   influxdb:
     image: "influxdb"

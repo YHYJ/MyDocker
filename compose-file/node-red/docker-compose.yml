@@ -5,7 +5,6 @@
 
 # Description:
 
-version: "3"
 services:
   node-red:
     image: "nodered/node-red"

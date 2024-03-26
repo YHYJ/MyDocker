@@ -7,7 +7,6 @@
 #
 # - 必须运行在manager上
 
-version: "3"
 services:
   visualizer:
     image: "dockersamples/visualizer"

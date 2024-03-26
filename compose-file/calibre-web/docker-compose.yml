@@ -5,7 +5,6 @@
 
 # Description: Web app for browsing, reading and downloading eBooks stored in a Calibre database
 
-version: "3"
 services:
   calibre-web:
     image: "linuxserver/calibre-web"

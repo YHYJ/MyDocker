@@ -5,7 +5,6 @@
 
 # Description: 服务仪表盘（Docker Sock由docker-socket-proxy代理）
 
-version: "3"
 services:
   dockerproxy:
     image: "ghcr.io/tecnativa/docker-socket-proxy"

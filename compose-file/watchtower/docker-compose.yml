@@ -6,7 +6,6 @@
 # Description: A process for automating Docker container base image updates
 # https://containrrr.dev/watchtower
 
-version: "3"
 services:
   watchtower:
     image: "containrrr/watchtower"
