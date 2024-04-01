@@ -45,10 +45,10 @@ services:
       docker-network: {}
     environment:
       TZ: "Asia/Shanghai"
-      VERSION: "win11"
+      VERSION: "tiny10"
       RAM_SIZE: "4G"
       CPU_CORES: "4"
-      DISK_SIZE: "128G"
+      DISK_SIZE: "32G"
     labels:
       servicename: "windows"
     logging:
