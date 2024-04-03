@@ -9,12 +9,12 @@ Created Time: 2022-10-25 11:00:39
 Description: Git 钩子，git switch 后将子模块也切换到同名分支
 
 Attentions:
-- 为了避免在执行 git checkout 时运行该钩子，请设置 SKIP_GIT_CHECKOUT=1
 
 Depends:
 -
 !
 
+# 为了避免在执行 git checkout 时运行该钩子，设置 SKIP_GIT_CHECKOUT=1
 [ "$SKIP_GIT_CHECKOUT" = 1 ] && exit 0
 
 ####################################################################
@@ -76,7 +76,7 @@ for file in "$parent_path"/*; do
   if [ -d "$file" ]; then
     # 进到仓库下的文件夹中
     cd "$file" || exit "$err_file"
-    # 判断是否是git仓库
+    # 判断是否是 git 仓库
     if isSubmodule "$file"; then
       # 获取子模块所有分支名
       submodule_branchs=$(getBranchs)

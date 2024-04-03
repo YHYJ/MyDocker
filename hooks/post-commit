@@ -6,7 +6,7 @@ Author: YJ
 Email: yj1516268@outlook.com
 Created Time: 2023-10-08 13:57:32
 
-Description: Git 钩子，git commit 后获取 hash
+Description: Git 钩子，git commit 后获取其哈希值
 
 Attentions:
 -
@@ -15,16 +15,20 @@ Depends:
 -
 !
 
-# 获取最新commit哈希值
+# 获取最新 Commit 哈希值
 commit_hash=$(git rev-parse --short HEAD)
 # 获取系统类型信息
 kernel=$(uname -s)
 
 function successInfo() {
-  echo -e "\x1b[35m-----\x1b[0m\x1b[36m最新commit哈希值已复制\x1b[0m\x1b[35m-----\x1b[0m"
+  echo -e "\x1b[35m-----\x1b[0m \x1b[36m最新 Commit Hash 已复制\x1b[0m \x1b[35m-----\x1b[0m"
 }
 
-# 复制哈希值到系统剪贴板（-n参数表示不换行）
+function failInfo() {
+  echo -e "\x1b[35m-----\x1b[0m \x1b[31m$1\x1b[0m \x1b[35m-----\x1b[0m"
+}
+
+# 复制哈希值到系统剪贴板（'-n' 参数表示不换行）
 case $kernel in
   Linux)
     case $XDG_SESSION_TYPE in
@@ -37,7 +41,7 @@ case $kernel in
         successInfo
         ;;
       *)
-        echo "Unsupported $XDG_SESSION_TYPE"
+        failInfo "不支持 $XDG_SESSION_TYPE 会话类型"
         ;;
     esac
     ;;
@@ -46,6 +50,6 @@ case $kernel in
     successInfo
     ;;
   *)
-    echo "Unsupported $kernel"
+    failInfo "不支持 $kernel 系统"
     ;;
 esac
