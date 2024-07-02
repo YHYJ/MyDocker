@@ -3,7 +3,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2024-07-02 15:24:56
 
-# Description: TODO
+# Description: Docker image for running an Apache WebDAV server
 
 services:
   webdav:
@@ -16,7 +16,8 @@ services:
       - "127.0.0.1:80:80"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/TODO:/var/lib/dav"  # WebDAV 基本目录
+      - "$PWD/user.passwd:/user.passwd"   # WebDAV 用户密码文件
+      - "/TODO:/var/lib/dav"              # WebDAV 基本目录
     networks:
       docker-network: {}
     environment:
