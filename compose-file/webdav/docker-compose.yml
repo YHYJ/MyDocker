@@ -16,12 +16,13 @@ services:
       - "127.0.0.1:80:80"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "/srv/dav:/var/lib/dav"
+      - "/TODO:/var/lib/dav"  # WebDAV 基本目录
     networks:
       docker-network: {}
     environment:
       TZ: "Asia/Shanghai"
-      AUTH_TYPE: "Digest"
+      LOCATION: "/webdav"
+      AUTH_TYPE: "Digest"     # Basic（HTTPS 推荐使用）, Digest（HTTP 推荐使用）
       USERNAME: "username"
       PASSWORD: "password"
     labels:
