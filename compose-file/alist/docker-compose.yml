@@ -1,0 +1,45 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2024-07-03 14:17:23
+
+# Description: A file list program that supports multiple storage, powered by Gin and React
+#
+# < v3.25.0
+#   - 查看管理员密码：`docker exec -it alist ./alist admin`
+# >= v3.25.0
+#   - 生成随机管理员密码：`docker exec -it alist ./alist admin random`
+#   - 自定义管理员密码：`docker exec -it alist ./alist admin set ADMIN_PASSWORD`
+
+services:
+  alist:
+    image: "xhofe/alist"
+    container_name: "alist"
+    hostname: "alist-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - "127.0.0.1:5244:5244"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "$PWD/alist:/opt/alist/data"
+    networks:
+      docker-network: {}
+    environment:
+      TZ: "Asia/Shanghai"
+      PUID: 0
+      PGID: 0
+      UMASK: 022
+    labels:
+      servicename: "alist"
+    logging:
+      driver: "json-file" # none, local, json-file(default), ...
+      options:
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
+
+networks:
+  docker-network:
+    name: "Docker-Network"
