@@ -39,7 +39,7 @@ services:
       - "127.0.0.1:3389:3389/udp"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
-      - "$HOME/Documents/Docker/Run/windows:/storage" # Windows 存储位置，可以将自己下载的 ISO 文件重命名为 custom.iso 放到该位置以跳过下载
+      - "$PWD/storage:/storage" # Windows 存储位置，可以将自己下载的 ISO 文件重命名为 custom.iso 放到该位置以跳过下载
     stop_grace_period: "2m"
     networks:
       docker-network: {}
