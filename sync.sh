@@ -38,8 +38,12 @@ fi
 
 # 将对应脚本转移到存储库根路径下
 echo -e "\x1b[35m-->\x1b[0m 处理 shell 脚本"
+# 存储库通用的脚本
+echo -e "    \x1b[35m-\x1b[0m 检测到 \x1b[33m通用\x1b[0m 存储库"
+cp -r "${save_dir}/scripts/"*.sh "${PWD}"
+# 存储库按项目区分的脚本
 if [ -f "general/version.go" ]; then
-  echo -e "    \x1b[35m-\x1b[0m 检测到 \x1b[33mgolang\x1b[0m 项目"
+  echo -e "    \x1b[35m-\x1b[0m 检测到 \x1b[33mgolang\x1b[0m 存储库"
   cp -r "${save_dir}/scripts/golang/"* "${PWD}"
 fi
 rm -rf "${save_dir}/scripts"
