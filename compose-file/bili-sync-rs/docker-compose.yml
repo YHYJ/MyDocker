@@ -1,0 +1,37 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2024-08-30 09:24:02
+
+# Description: 自动轮询下载 Bilibili 收藏夹/视频合计/视频列表
+#   - https://github.com/amtoaer/bili-sync
+
+services:
+  bili-sync-rs:
+    image: "amtoaer/bili-sync-rs:latest"
+    container_name: "bili-sync-rs"
+    hostname: "bili-sync-rs-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    user: 1000:1000
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "$PWD/config:/app/.config/bili-sync" # 配置文件路径
+      - "/storage/Bilibili:/home/amtoaer/Downloads/bili-sync" # 下载文件路径
+    networks:
+      docker-network: {}
+    environment:
+      TZ: "Asia/Shanghai"
+    labels:
+      servicename: "bili-sync-rs"
+    logging:
+      driver: "json-file" # none, local, json-file(default), ...
+      options:
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
+
+networks:
+  docker-network:
+    name: "Docker-Network"

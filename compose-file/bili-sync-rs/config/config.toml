@@ -1,0 +1,45 @@
+video_name = "{{title}}"
+page_name = "{{bvid}}"
+interval = 1200
+upper_path = "/Users/amtoaer/Library/Application Support/bili-sync/upper_face"
+nfo_time_type = "favtime"
+
+[credential]
+sessdata = ""
+bili_jct = ""
+buvid3 = ""
+dedeuserid = ""
+ac_time_value = ""
+
+[filter_option]
+video_max_quality = "Quality8k"
+video_min_quality = "Quality360p"
+audio_max_quality = "QualityHiRES"
+audio_min_quality = "Quality64k"
+codecs = ["AV1", "HEV", "AVC"]
+no_dolby_video = false
+no_dolby_audio = false
+no_hdr = false
+no_hires = false
+
+[danmaku_option]
+duration = 15.0
+font = "黑体"
+font_size = 25
+width_ratio = 1.2
+horizontal_gap = 20.0
+lane_size = 32
+float_percentage = 0.5
+bottom_percentage = 0.3
+opacity = 76
+bold = true
+outline = 0.8
+time_offset = 0.0
+
+[favorite_list]
+
+[collection_list]
+
+[watch_later]
+enabled = false
+path = ""
