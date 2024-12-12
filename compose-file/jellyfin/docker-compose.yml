@@ -4,8 +4,7 @@
 # Created Time: 2023-07-30 12:34:12
 
 # Description: The Free Software Media Browser
-#
-# nyanmisaka/jellyfin是jellyfin成员针对中国用户特制版，开箱即用
+# nyanmisaka/jellyfin 是 jellyfin 成员针对中国用户特制版，开箱即用
 
 services:
   jellyfin:

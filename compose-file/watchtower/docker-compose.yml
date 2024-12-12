@@ -21,8 +21,8 @@ services:
     environment:
       TZ: "Asia/Shanghai"
       WATCHTOWER_CLEANUP: true
-      WATCHTOWER_POLL_INTERVAL: 86400 # 镜像更新轮询1天
-      WATCHTOWER_LABEL_ENABLE: true # 更新com.centurylinklabs.watchtower.enable标签设置为true的容器
+      WATCHTOWER_POLL_INTERVAL: 86400 # 镜像更新轮询 1 天
+      WATCHTOWER_LABEL_ENABLE: true # 更新 com.centurylinklabs.watchtower.enable 标签设置为 true 的容器
     labels:
       servicename: "watchtower"
     logging:

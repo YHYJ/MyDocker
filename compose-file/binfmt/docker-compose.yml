@@ -3,7 +3,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2020-09-08 09:46:42
 
-# Description: 开启binfmt_misc支持
+# Description: 开启 binfmt_misc 支持
 
 services:
   binfmt:

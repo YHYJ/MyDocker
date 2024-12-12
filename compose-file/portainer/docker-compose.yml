@@ -14,7 +14,7 @@ services:
     privileged: false
     ports:
       - "0.0.0.0:8000:8000"
-      - "127.0.0.1:9000:9000" # 8000为Agent功能端口，9000为HTTP端口，9443为HTTPS端口
+      - "127.0.0.1:9000:9000" # 8000 为 Agent 功能端口，9000 为HTTP端口，9443 为 HTTPS 端口
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"

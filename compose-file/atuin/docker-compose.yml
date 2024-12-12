@@ -26,8 +26,8 @@ services:
     environment:
       TZ: "Asia/Shanghai"
       ATUIN_HOST: "0.0.0.0"
-      ATUIN_OPEN_REGISTRATION: $OPEN_REGISTRATION
-      ATUIN_DB_URI: postgres://$DB_USERNAME:$DB_PASSWORD@db/atuin
+      ATUIN_OPEN_REGISTRATION: "$OPEN_REGISTRATION"
+      ATUIN_DB_URI: "postgres://$DB_USERNAME:$DB_PASSWORD@db/atuin"
     labels:
       servicename: "atuin"
     logging:
@@ -51,8 +51,8 @@ services:
       docker-network: {}
     environment:
       TZ: "Asia/Shanghai"
-      POSTGRES_USER: $DB_USERNAME
-      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_USER: "$DB_USERNAME"
+      POSTGRES_PASSWORD: "$DB_PASSWORD"
       POSTGRES_DB: "atuin"
     labels:
       servicename: "postgres"

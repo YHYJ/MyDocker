@@ -3,7 +3,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2021-11-26 09:28:51
 
-# Description: mrdoc的docker版本,支持arm64/amd64/armv7
+# Description: mrdoc 的 docker 版本,支持 arm64/amd64/armv7
 
 services:
   mrdoc:

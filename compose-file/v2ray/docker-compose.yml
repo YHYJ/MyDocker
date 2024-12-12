@@ -4,8 +4,7 @@
 # Created Time: 2022-05-10 15:47:17
 
 # Description: V2Fly, a community-driven edition of V2Ray
-
-# 1. https://github.com/v2fly/v2ray-core
+# https://github.com/v2fly/v2ray-core
 
 services:
   v2ray:

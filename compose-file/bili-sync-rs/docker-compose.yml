@@ -13,7 +13,7 @@ services:
     hostname: "bili-sync-rs-docker"
     restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
-    user: 1000:1000
+    user: "1000:1000"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "$PWD/config:/app/.config/bili-sync" # 配置文件路径

@@ -3,9 +3,9 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2021-09-22 17:46:36
 
-# Description: DataX离线数据同步工具/平台 —— web版
-# - 必须使用'host'网络模式，否则datax-web和mysql无法通信
-# - 访问`http://127.0.0.1:20080/index.html`，用户名密码是：admin/123456
+# Description: DataX 离线数据同步工具/平台 —— Web 版
+# - 必须使用 'host' 网络模式，否则 datax-web 和 mysql 无法通信
+# - 访问 `http://127.0.0.1:20080/index.html`，用户名密码是：admin/123456
 
 services:
   datax-web:

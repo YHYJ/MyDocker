@@ -6,7 +6,8 @@
 # Description: Gitea: Git with a cup of tea - A painless self-hosted Git service
 
 # 1. https://gitea.io/zh-cn
-# 2. latest标签安装的是发行版，因此指定使用稳定版标签
+# 2. latest 标签安装的是发行版，因此指定使用稳定版标签
+# 3. 版本标签可能已过时，需要查询最新稳定版
 
 services:
   gitea:
@@ -27,22 +28,22 @@ services:
       docker-network: {}
     environment:
       TZ: "Asia/Shanghai"
-      DOMAIN: "localhost" # 用于Gitea UI中显示的http克隆URL
-      SSH_DOMAIN: "localhost" # 用于Gitea UI中显示的ssh克隆URL
-      HTTP_PORT: 3000 # HTTP监听的端口
-      SSH_PORT: 22 # 克隆URL中显示的SSH端口
-      ROOT_URL: "http://localhost/" # 覆盖自动生成的公共URL
-      SSH_LISTEN_PORT: 22 # 内置SSH服务器的端口
+      DOMAIN: "localhost" # 用于 Gitea UI 中显示的 http 克隆 URL
+      SSH_DOMAIN: "localhost" # 用于 Gitea UI 中显示的 ssh 克隆 URL
+      HTTP_PORT: 3000 # HTTP 监听的端口
+      SSH_PORT: 22 # 克隆 URL 中显示的 ssh 端口
+      ROOT_URL: "http://localhost/" # 覆盖自动生成的公共 URL
+      SSH_LISTEN_PORT: 22 # 内置 SSH 服务器的端口
       APP_NAME: "YJ's Gitea" # 应用程序名称，在页面标题中使用
-      RUN_MODE: "prod" # 应用程序运行模式(dev, prod, test)，会影响性能和调试
-      LFS_START_SERVER: true # git-lfs支持
+      RUN_MODE: "prod" # 应用程序运行模式 (dev, prod, test)，会影响性能和调试
+      LFS_START_SERVER: true # git-lfs 支持
       INSTALL_LOCK: false # 能否访问安装页面
       DISABLE_REGISTRATION: true # 是否禁止用户注册
       REQUIRE_SIGNIN_VIEW: true # 是否只允许登录用户查看任何页面
       DISABLE_USERS_PAGE: false # 是否隐藏用户探索页面
-      USER_UID: 1000 # 在容器内运行Gitea的用户的UID
-      USER_GID: 1000 # 在容器内运行Gitea的用户的GID
-      DB_TYPE: "mysql" # 使用的数据库类型(mysql, postgres, mssql, sqlite3)
+      USER_UID: 1000 # 在容器内运行 Gitea 的用户的 UID
+      USER_GID: 1000 # 在容器内运行 Gitea 的用户的 GID
+      DB_TYPE: "mysql" # 使用的数据库类型 (mysql, postgres, mssql, sqlite3)
       DB_HOST: "database:3306" # 数据库主机地址和端口
       DB_NAME: "gitea" # 数据库名称
       DB_USER: "gitea" # 数据库用户名
