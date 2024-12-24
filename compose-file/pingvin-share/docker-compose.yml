@@ -1,0 +1,40 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2023-08-09 14:51:45
+
+# Description: 集轻盈与美观于一体的自托管文件共享平台，完美实现无缝高效的文件共享
+
+services:
+  pingvin-share:
+    image: 'stonith404/pingvin-share'
+    container_name: 'pingvin-share'
+    hostname: 'pingvin-share-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './data:/opt/app/backend/data'
+      - './data/images:/opt/app/frontend/public/img'
+    networks:
+      service: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+    labels:
+      servicename: 'pingvin-share'
+      com.centurylinklabs.watchtower.enable: true
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+
+networks:
+  service:
+    name: 'My-Cloud-Service'
+    external: true
