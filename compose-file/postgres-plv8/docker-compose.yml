@@ -3,17 +3,19 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2021-09-02 14:45:30
 
-# Description: Postgres 10 + plv8 v2.3.0
+# Description: Docker image with installed PLV8 extension on PostgreSQL 17 and PostgreSQL 16
+#
+# 创建 PLV8 扩展：```CREATE EXTENSION plv8;```
 
 services:
   postgres-plv8:
-    image: "pyramation/postgres-plv8"
+    image: "sibedge/postgres-plv8"
     container_name: "postgres-plv8"
     hostname: "postgres-plv8-docker"
     restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
     privileged: false
     ports:
-      - "127.0.0.1:5434:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "postgres-plv8:/var/lib/postgresql/data"
