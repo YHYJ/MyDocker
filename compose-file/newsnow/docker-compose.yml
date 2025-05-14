@@ -1,0 +1,49 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2025-05-14 20:54:48
+
+# Description: TODO
+
+services:
+  newsnow:
+    image: "ghcr.io/ourongxing/newsnow"
+    container_name: "newsnow"
+    hostname: "newsnow-docker"
+    restart: "unless-stopped" # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    ports:
+      - "127.0.0.1:4444:4444"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "newsnow:/usr/app/.data"
+    networks:
+      docker-network: {}
+    environment:
+      TZ: "Asia/Shanghai"
+      HOST: "0.0.0.0"
+      PORT: 4444
+      NODE_ENV: "production"
+      G_CLIENT_ID: ""
+      G_CLIENT_SECRET: ""
+      JWT_SECRET: ""
+      INIT_TABLE: true
+      ENABLE_CACHE: true
+    labels:
+      servicename: "newsnow"
+    logging:
+      driver: "json-file" # none, local, json-file(default), ...
+      options:
+        max-size: "10m"
+        max-file: "3"
+        tag: "{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}"
+        labels: "servicename"
+
+volumes:
+  newsnow:
+    name: newsnow
+
+networks:
+  docker-network:
+    name: "Docker-Network"
+
