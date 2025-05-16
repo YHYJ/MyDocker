@@ -3,7 +3,7 @@
 # Email: yj1516268@outlook.com
 # Created Time: 2025-05-14 20:54:48
 
-# Description: TODO
+# Description: 新闻聚合
 
 services:
   newsnow:
@@ -31,6 +31,7 @@ services:
       ENABLE_CACHE: true
     labels:
       servicename: "newsnow"
+      com.centurylinklabs.watchtower.enable: true
     logging:
       driver: "json-file" # none, local, json-file(default), ...
       options:
