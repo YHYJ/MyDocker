@@ -1,0 +1,40 @@
+# File: docker-compose.yml
+# Author: YJ
+# Email: yj1516268@outlook.com
+# Created Time: 2023-08-22 15:39:59
+
+# Description: A minimal pastebin with a design shamelessly copied from bin.
+
+services:
+  wastebin:
+    image: 'quxfoo/wastebin'
+    container_name: 'wastebin'
+    hostname: 'wastebin-docker'
+    restart: 'unless-stopped'   # no, unless-stopped, always, on-failure:<max-retries>
+    privileged: false
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './data:/data'
+    networks:
+      docker-network: {}
+    environment:
+      TZ: 'Asia/Shanghai'
+      RUST_LOG: 'info'
+      WASTEBIN_BASE_URL: 'https://Your-Domain'  # 仅用于二维码基础链接
+      WASTEBIN_TITLE: "My Wastebin"
+      WASTEBIN_DATABASE_PATH: '/data/state.db'
+      WASTEBIN_SIGNING_KEY: ''
+    labels:
+      servicename: 'wastebin'
+      com.centurylinklabs.watchtower.enable: true
+    logging:
+      driver: 'json-file'       # none, local, json-file(default), ...
+      options:
+        max-size: '10m'
+        max-file: '3'
+        tag: '{{.Name}}/{{.ID}}/{{.ImageName}}/{{.ImageID}}'
+        labels: 'servicename'
+
+networks:
+  docker-network:
+    name: "Docker-Network"
