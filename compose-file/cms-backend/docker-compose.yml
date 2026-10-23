@@ -26,6 +26,12 @@ services:
       DB_PASSWORD: "$DB_PASSWORD"
     labels:
       servicename: "cms-backend"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8888/healthz"] # 200=进程+DB 正常；503=DB 不可用
+      interval: "30s"
+      timeout: "5s"        # 必须小于 healthz 内 DB 探活上限（2s）
+      retries: 3
+      start_period: "15s"  # 启动阶段含连接池/PLV8 类型加载
     logging:
       driver: "json-file" # none, local, json-file(default), ...
       options:
